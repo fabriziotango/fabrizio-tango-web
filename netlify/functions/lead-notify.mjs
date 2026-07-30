@@ -14,8 +14,13 @@ const LABELS = {
 };
 
 const TITLES = {
-  diagnostico: "Diagnóstico personalizado",
-  agendar: "Agenda de llamada"
+  diagnostico: "📋 Diagnóstico personalizado",
+  agendar: "📞 Agenda de llamada"
+};
+
+const FIELD_ORDER = {
+  agendar: ["turno", "nombre", "email", "telefono", "servicio"],
+  diagnostico: ["nombre", "email", "whatsapp", "instagram", "respuestas"]
 };
 
 async function sendMessage(text) {
@@ -52,22 +57,30 @@ export default async (req) => {
     const formName = extractFormName(body);
     const data = extractData(body);
 
-    const title = TITLES[formName] || "Nuevo contacto desde la web";
-    const lines = [`Nuevo lead: ${title}`, ""];
+    const title = TITLES[formName] || "🔔 Nuevo contacto desde la web";
+    const lines = [title, ""];
 
     if (data) {
-      for (const [key, value] of Object.entries(data)) {
-        if (!value || EXCLUDE_KEYS.includes(key) || key.endsWith("-hp")) continue;
+      const order = FIELD_ORDER[formName] || Object.keys(data);
+      const seen = new Set();
 
+      const printField = (key, value) => {
+        if (!value || EXCLUDE_KEYS.includes(key) || key.endsWith("-hp")) return;
         if (key === "respuestas") {
           lines.push("Respuestas del cuestionario:");
           String(value).split(" | ").forEach(r => lines.push("- " + r));
-          continue;
+          return;
         }
-
         const label = LABELS[key] || key;
         lines.push(`${label}: ${value}`);
-      }
+      };
+
+      order.forEach(key => {
+        if (key in data) { printField(key, data[key]); seen.add(key); }
+      });
+      Object.entries(data).forEach(([key, value]) => {
+        if (!seen.has(key)) printField(key, value);
+      });
     } else {
       lines.push("No se pudieron leer los datos del formulario.");
     }
