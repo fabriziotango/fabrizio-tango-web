@@ -249,14 +249,14 @@
     position:relative;width:100%;max-width:440px;max-height:90vh;overflow-y:auto;
     background:var(--panel);border-radius:16px;box-shadow:0 40px 80px -20px rgba(2,8,14,.5);
   }
-  .modal-banner{height:64px;border-radius:16px 16px 0 0;background:linear-gradient(120deg,var(--grad-1),var(--grad-2),var(--grad-3));}
+  .modal-banner{height:64px;border-radius:16px 16px 0 0;background:linear-gradient(120deg,var(--grad-1),var(--grad-2),var(--grad-3));display:flex;align-items:center;justify-content:center;padding:0 50px;}
   .modal-close{
     position:absolute;top:12px;right:12px;width:30px;height:30px;border-radius:50%;border:none;
     background:rgba(6,15,24,.35);color:#fff;font-size:18px;line-height:1;cursor:pointer;z-index:2;
   }
   .modal-body{padding:26px 26px 30px;}
   .modal-body h3{font-size:1.15rem;font-weight:800;color:var(--blue-deep);}
-  .modal-turno{margin-top:6px;font-size:13px;color:var(--aqua);font-weight:700;text-align:center;}
+  .modal-turno{font-size:13px;color:#fff;font-weight:700;text-align:center;}
   .modal-body form{margin-top:18px;}
   .modal-card--legal{max-width:560px;}
   .legal-updated{margin-top:4px;font-size:11.5px;color:var(--muted-2);}
@@ -497,10 +497,9 @@
   <div class="modal-backdrop" id="agendarModal">
     <div class="modal-card">
       <button type="button" class="modal-close js-modal-close" aria-label="Cerrar">&times;</button>
-      <div class="modal-banner"></div>
+      <div class="modal-banner"><p class="modal-turno" id="modalTurno"></p></div>
       <div class="modal-body">
         <h3 id="agendarModalTitle">Confirmá tu turno</h3>
-        <p class="modal-turno" id="modalTurno"></p>
         <form id="agendarForm" name="agendar" data-netlify="true" netlify-honeypot="ag-hp">
           <input type="hidden" name="form-name" value="agendar">
           <p style="position:absolute;left:-9999px;"><label>No completar: <input name="ag-hp"></label></p>
@@ -591,7 +590,7 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="3.5" width="17" height="17" rx="5.5"/><circle cx="12" cy="12" r="3.8"/><path d="M16.6 7.4v.01"/></svg>
       </a>
       <a class="contact-card" href="https://wa.me/5491178224907?text=Hola%20Fabri%2C%20quiero%20hacerte%20una%20consulta" target="_blank" rel="noopener" aria-label="WhatsApp">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.198.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.149-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12.05 21.785h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884a9.84 9.84 0 0 1 6.99 2.897 9.83 9.83 0 0 1 2.893 6.994c-.003 5.45-4.437 9.885-9.887 9.885zM20.52 3.449A11.816 11.816 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892a11.86 11.86 0 0 0 1.588 5.945L0 24l6.335-1.652a11.882 11.882 0 0 0 5.715 1.494h.005c6.554 0 11.89-5.335 11.892-11.893a11.821 11.821 0 0 0-3.427-8.5z"/></svg>
+        <svg viewBox="0 0 24 24" fill="currentColor" style="width:21px;height:21px;"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.198.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.149-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12.05 21.785h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884a9.84 9.84 0 0 1 6.99 2.897 9.83 9.83 0 0 1 2.893 6.994c-.003 5.45-4.437 9.885-9.887 9.885zM20.52 3.449A11.816 11.816 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892a11.86 11.86 0 0 0 1.588 5.945L0 24l6.335-1.652a11.882 11.882 0 0 0 5.715 1.494h.005c6.554 0 11.89-5.335 11.892-11.893a11.821 11.821 0 0 0-3.427-8.5z"/></svg>
       </a>
       <a class="contact-card" href="mailto:fabrizio.a.tango@gmail.com" aria-label="Email">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M3.5 6.5l8.5 6 8.5-6"/></svg>
