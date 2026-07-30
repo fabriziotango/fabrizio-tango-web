@@ -5,8 +5,31 @@ async function sendMessage(text) {
   await fetch(`https://api.telegram.org/bot${TOKEN}/sendMessage`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ chat_id: CHAT_ID, text, parse_mode: "Markdown" })
+    body: JSON.stringify({ chat_id: CHAT_ID, text })
   });
+}
+
+function extractData(body) {
+  const candidates = [
+    body?.payload?.data,
+    body?.payload?.human_fields,
+    body?.data,
+    body?.human_fields
+  ];
+  for (const c of candidates) {
+    if (c && typeof c === "object" && Object.keys(c).length) return c;
+  }
+  return null;
+}
+
+function extractFormName(body) {
+  return (
+    body?.payload?.form_name ||
+    body?.form_name ||
+    body?.payload?.data?.["form-name"] ||
+    body?.data?.["form-name"] ||
+    "desconocido"
+  );
 }
 
 export default async (req) => {
@@ -14,14 +37,22 @@ export default async (req) => {
 
   try {
     const body = await req.json();
-    const payload = body.payload || {};
-    const formName = payload.form_name || "desconocido";
-    const data = payload.data || {};
+    console.log("lead-notify raw body:", JSON.stringify(body));
 
-    const lines = [`🔔 *[Web personal] Nuevo lead — ${formName}*`, ""];
-    for (const [key, value] of Object.entries(data)) {
-      if (!value || key === "form-name" || key.endsWith("-hp")) continue;
-      lines.push(`*${key}:* ${value}`);
+    const formName = extractFormName(body);
+    const data = extractData(body);
+
+    const lines = [`Nuevo lead - Web personal - ${formName}`, ""];
+
+    if (data) {
+      for (const [key, value] of Object.entries(data)) {
+        if (!value || key === "form-name" || key.endsWith("-hp")) continue;
+        lines.push(`${key}: ${value}`);
+      }
+    } else {
+      lines.push("(no se pudieron leer los campos, revisar logs de la funcion)");
+      lines.push("");
+      lines.push(JSON.stringify(body).slice(0, 500));
     }
 
     await sendMessage(lines.join("\n"));

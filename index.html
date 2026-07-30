@@ -111,7 +111,7 @@
   .wrap>section:first-of-type{padding-top:0;}
   .eyebrow{display:inline-block;font-size:12.5px;font-weight:800;letter-spacing:0.06em;text-transform:uppercase;color:var(--aqua);margin-bottom:18px;}
   .avatar{width:104px;height:104px;border-radius:50%;object-fit:cover;border:3px solid var(--panel-2);margin:0 auto 22px;}
-  .hero h1{font-size:clamp(1.6rem,7vw,2.7rem);font-weight:800;letter-spacing:-0.02em;text-wrap:balance;color:var(--blue-deep);}
+  .hero h1{font-size:clamp(1.35rem,5.6vw,2.7rem);font-weight:800;letter-spacing:-0.02em;text-wrap:balance;color:var(--blue-deep);}
   .hero h1 em{font-style:normal;color:var(--aqua);}
   .hero p.sub{margin:16px auto 0;max-width:44ch;font-size:16px;line-height:1.6;color:var(--muted);}
   .hero-ctas{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:30px;}
@@ -419,7 +419,7 @@
     </div>
 
     <div class="quiz-final" id="quizFinal">
-      <h3>¿A dónde te envío tu diagnóstico personalizado?</h3>
+      <h3 id="quizFinalTitle">¿A dónde te envío tu diagnóstico personalizado?</h3>
       <form id="leadForm" class="lead-form" name="diagnostico" data-netlify="true" netlify-honeypot="lf-hp">
         <input type="hidden" name="form-name" value="diagnostico">
         <p style="position:absolute;left:-9999px;"><label>No completar: <input name="lf-hp"></label></p>
@@ -499,7 +499,7 @@
       <button type="button" class="modal-close js-modal-close" aria-label="Cerrar">&times;</button>
       <div class="modal-banner"></div>
       <div class="modal-body">
-        <h3>Confirmá tu turno</h3>
+        <h3 id="agendarModalTitle">Confirmá tu turno</h3>
         <p class="modal-turno" id="modalTurno"></p>
         <form id="agendarForm" name="agendar" data-netlify="true" netlify-honeypot="ag-hp">
           <input type="hidden" name="form-name" value="agendar">
@@ -521,6 +521,10 @@
           <input type="hidden" name="turno">
           <button type="submit" class="cta-badge cta-badge--grad cta-badge--block cta-badge--noarrow cal-btn">Agendar llamada</button>
         </form>
+        <div class="agendar-thanks" id="agendarThanks" style="display:none;text-align:center;">
+          <p style="font-weight:800;font-size:17px;color:var(--blue-deep);margin-bottom:8px;">¡Gracias!</p>
+          <p style="color:var(--muted);font-size:14px;">Tu turno de consultoría ya está agendado. Te esperamos en el horario elegido.</p>
+        </div>
       </div>
     </div>
   </div>
@@ -712,17 +716,13 @@
   var agendarFormEl = document.getElementById('agendarForm');
   agendarFormEl.addEventListener('submit', function(e){
     e.preventDefault();
-    var nombre = document.getElementById('ag-nombre').value.trim();
-    var email = document.getElementById('ag-email').value.trim();
-    var telefono = document.getElementById('ag-telefono').value.trim();
-    var servicio = document.getElementById('ag-servicio').value;
     var turno = (selectedDay && selectedTime) ? (selectedDay + ' a las ' + selectedTime) : 'sin especificar';
     agendarFormEl.querySelector('[name="turno"]').value = turno;
-    var msg = 'Hola Fabrizio! Quiero agendar una consultoría de 60 minutos.';
-    if (selectedDay && selectedTime) msg += ' ¿Te queda bien el ' + selectedDay + ' a las ' + selectedTime + '?';
-    msg += '\n\nNombre: ' + nombre + '\nEmail: ' + email + '\nTeléfono: ' + telefono + '\nMe interesa: ' + servicio;
     submitToNetlify(agendarFormEl);
-    sendWA(msg);
+    agendarFormEl.style.display = 'none';
+    document.getElementById('agendarModalTitle').style.display = 'none';
+    document.getElementById('modalTurno').style.display = 'none';
+    document.getElementById('agendarThanks').style.display = 'block';
   });
 
   // Quiz de 3 pasos
@@ -769,6 +769,7 @@
     leadFormEl.querySelector('[name="respuestas"]').value = '1) ' + respuestas[0] + ' | 2) ' + respuestas[1] + ' | 3) ' + respuestas[2];
     submitToNetlify(leadFormEl);
     leadFormEl.style.display = 'none';
+    document.getElementById('quizFinalTitle').style.display = 'none';
     document.querySelector('#quizFinal .quiz-back').style.display = 'none';
     document.getElementById('leadThanks').style.display = 'block';
   });
