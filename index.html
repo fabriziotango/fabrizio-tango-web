@@ -64,7 +64,7 @@
       "name": "¿Trabajás solo con negocios de Argentina?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "No, trabajo con negocios y profesionales de toda Latinoamérica."
+        "text": "No, trabajo con negocios y profesionales independientes de toda Latinoamérica."
       }
     },
     {
@@ -333,7 +333,7 @@
 </nav>
 
 <header class="hero">
-  <h1>Conseguí <em>más clientes</em> desde Google, <em>sin depender de publicidad paga</em></h1>
+  <h1>Conseguí más clientes desde Google, <em>sin depender de publicidad paga</em></h1>
   <p class="sub">Llevá tu negocio a más clientes cada mes y más visibilidad, sin depender de anuncios.</p>
   <div class="hero-ctas">
     <a class="cta-badge cta-badge--grad cta-badge--noarrow" href="#agendar">Agendar una llamada</a>
@@ -413,11 +413,14 @@
 
     <div class="quiz-final" id="quizFinal">
       <h3>¿A dónde te envío tu diagnóstico personalizado?</h3>
-      <form id="leadForm" class="lead-form">
-        <div class="field"><label for="lf-nombre">Tu nombre y apellido</label><input id="lf-nombre" type="text" placeholder="Tu nombre y apellido" required></div>
-        <div class="field"><label for="lf-correo">Tu correo electrónico</label><input id="lf-correo" type="email" placeholder="tu@email.com" required></div>
-        <div class="field"><label for="lf-whatsapp">Tu número de WhatsApp</label><input id="lf-whatsapp" type="tel" placeholder="+54 9 11 1234 5678" required></div>
-        <div class="field"><label for="lf-instagram">Tu @ de Instagram</label><input id="lf-instagram" type="text" placeholder="@tu_usuario"></div>
+      <form id="leadForm" class="lead-form" name="diagnostico" data-netlify="true" netlify-honeypot="lf-hp">
+        <input type="hidden" name="form-name" value="diagnostico">
+        <p style="position:absolute;left:-9999px;"><label>No completar: <input name="lf-hp"></label></p>
+        <div class="field"><label for="lf-nombre">Tu nombre y apellido</label><input id="lf-nombre" name="nombre" type="text" placeholder="Tu nombre y apellido" required></div>
+        <div class="field"><label for="lf-correo">Tu correo electrónico</label><input id="lf-correo" name="email" type="email" placeholder="tu@email.com" required></div>
+        <div class="field"><label for="lf-whatsapp">Tu número de WhatsApp</label><input id="lf-whatsapp" name="whatsapp" type="tel" placeholder="+54 9 11 1234 5678" required></div>
+        <div class="field"><label for="lf-instagram">Tu @ de Instagram</label><input id="lf-instagram" name="instagram" type="text" placeholder="@tu_usuario"></div>
+        <input type="hidden" name="respuestas">
         <button type="submit" class="cta-badge cta-badge--grad cta-badge--block lead-submit">Continuar</button>
       </form>
       <button type="button" class="quiz-back">&larr; volver</button>
@@ -487,13 +490,15 @@
       <div class="modal-body">
         <h3>Confirmá tu turno</h3>
         <p class="modal-turno" id="modalTurno"></p>
-        <form id="agendarForm">
-          <div class="field"><label for="ag-nombre">Nombre y Apellido</label><input id="ag-nombre" type="text" placeholder="Tu nombre y apellido" required></div>
-          <div class="field"><label for="ag-email">Email</label><input id="ag-email" type="email" placeholder="tu@email.com" required></div>
-          <div class="field"><label for="ag-telefono">Número de Teléfono</label><input id="ag-telefono" type="tel" placeholder="+54 9 11 1234 5678" required></div>
+        <form id="agendarForm" name="agendar" data-netlify="true" netlify-honeypot="ag-hp">
+          <input type="hidden" name="form-name" value="agendar">
+          <p style="position:absolute;left:-9999px;"><label>No completar: <input name="ag-hp"></label></p>
+          <div class="field"><label for="ag-nombre">Nombre y Apellido</label><input id="ag-nombre" name="nombre" type="text" placeholder="Tu nombre y apellido" required></div>
+          <div class="field"><label for="ag-email">Email</label><input id="ag-email" name="email" type="email" placeholder="tu@email.com" required></div>
+          <div class="field"><label for="ag-telefono">Número de Teléfono</label><input id="ag-telefono" name="telefono" type="tel" placeholder="+54 9 11 1234 5678" required></div>
           <div class="field">
             <label for="ag-servicio">¿Qué te interesa?</label>
-            <select id="ag-servicio" required>
+            <select id="ag-servicio" name="servicio" required>
               <option value="" disabled selected>Elegí una opción</option>
               <option>SEO Local &amp; Google Maps</option>
               <option>Auditoría &amp; SEO On Page</option>
@@ -502,6 +507,7 @@
               <option>Todavía no sé, quiero que me orientes</option>
             </select>
           </div>
+          <input type="hidden" name="turno">
           <button type="submit" class="cta-badge cta-badge--grad cta-badge--block cta-badge--noarrow cal-btn">Agendar llamada</button>
         </form>
       </div>
@@ -550,7 +556,7 @@
     <div class="faq reveal">
       <details><summary>¿Necesito tener un negocio armado?</summary><div class="a">No hace falta. Cualquier consulta la podemos hablar en una <a href="#agendar" class="faq-link">llamada</a>.</div></details>
       <details><summary>¿Qué pasa si no sé qué servicio necesito?</summary><div class="a">Completá el <a href="#quiz" class="faq-link">cuestionario</a> de arriba o directamente <a href="#agendar" class="faq-link">agendá una llamada</a>, y ahí vemos juntos cuál es la mejor opción para tu caso.</div></details>
-      <details><summary>¿Trabajás solo con negocios de Argentina?</summary><div class="a">No, trabajo con negocios y profesionales de toda Latinoamérica.</div></details>
+      <details><summary>¿Trabajás solo con negocios de Argentina?</summary><div class="a">No, trabajo con negocios y profesionales independientes de toda Latinoamérica.</div></details>
       <details><summary>¿Puedo hacer más de un servicio a la vez?</summary><div class="a">Sí. Muchos dueños de negocio combinan nuestros servicios porque son complementarios entre sí.</div></details>
     </div>
   </section>
@@ -683,15 +689,28 @@
   });
 
   // Formulario de agendar (admisión, dentro del modal)
-  document.getElementById('agendarForm').addEventListener('submit', function(e){
+  function submitToNetlify(form){
+    var data = new FormData(form);
+    fetch('/', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+      body: new URLSearchParams(data).toString()
+    }).catch(function(){});
+  }
+
+  var agendarFormEl = document.getElementById('agendarForm');
+  agendarFormEl.addEventListener('submit', function(e){
     e.preventDefault();
     var nombre = document.getElementById('ag-nombre').value.trim();
     var email = document.getElementById('ag-email').value.trim();
     var telefono = document.getElementById('ag-telefono').value.trim();
     var servicio = document.getElementById('ag-servicio').value;
+    var turno = (selectedDay && selectedTime) ? (selectedDay + ' a las ' + selectedTime) : 'sin especificar';
+    agendarFormEl.querySelector('[name="turno"]').value = turno;
     var msg = 'Hola Fabrizio! Quiero agendar una consultoría de 60 minutos.';
     if (selectedDay && selectedTime) msg += ' ¿Te queda bien el ' + selectedDay + ' a las ' + selectedTime + '?';
     msg += '\n\nNombre: ' + nombre + '\nEmail: ' + email + '\nTeléfono: ' + telefono + '\nMe interesa: ' + servicio;
+    submitToNetlify(agendarFormEl);
     sendWA(msg);
   });
 
@@ -733,17 +752,20 @@
     });
   });
 
-  document.getElementById('leadForm').addEventListener('submit', function(e){
+  var leadFormEl = document.getElementById('leadForm');
+  leadFormEl.addEventListener('submit', function(e){
     e.preventDefault();
     var nombre = document.getElementById('lf-nombre').value.trim();
     var correo = document.getElementById('lf-correo').value.trim();
     var whatsapp = document.getElementById('lf-whatsapp').value.trim();
     var instagram = document.getElementById('lf-instagram').value.trim();
+    leadFormEl.querySelector('[name="respuestas"]').value = '1) ' + respuestas[0] + ' | 2) ' + respuestas[1] + ' | 3) ' + respuestas[2];
 
     var msg = 'Hola Fabrizio! Soy ' + nombre + '.';
     msg += '\n\n1) ' + respuestas[0] + '\n2) ' + respuestas[1] + '\n3) ' + respuestas[2];
     msg += '\n\nMi email es ' + correo + ' y mi WhatsApp es ' + whatsapp + '.';
     if (instagram) msg += ' Mi Instagram es ' + instagram + '.';
+    submitToNetlify(leadFormEl);
     sendWA(msg);
   });
 </script>
