@@ -100,6 +100,12 @@
   img{max-width:100%;display:block;}
   .wrap{max-width:760px;margin:0 auto;padding:0 24px;}
 
+  /* NAVBAR */
+  .topnav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.9);backdrop-filter:none;border-bottom:1px solid var(--line);}
+  .topnav-inner{max-width:1080px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;}
+  .topnav-brand{display:inline-flex;align-items:center;gap:9px;text-decoration:none;color:var(--blue-deep);font-weight:800;font-size:15px;letter-spacing:-0.01em;}
+  .topnav-brand img{border-radius:50%;display:block;}
+
   /* HERO — carodubi.com style, fondo blanco */
   .hero{padding:76px 24px 48px;text-align:center;background:var(--bg);}
   .eyebrow{display:inline-block;font-size:12.5px;font-weight:800;letter-spacing:0.06em;text-transform:uppercase;color:var(--aqua);margin-bottom:18px;}
@@ -317,6 +323,13 @@
 </style>
 </head>
 <body>
+
+<nav class="topnav">
+  <div class="topnav-inner">
+    <a href="#" class="topnav-brand"><img src="data:image/png;base64,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" alt="Fabrizio Tango" width="32" height="32"><span>Fabrizio Tango</span></a>
+    <a class="cta-badge cta-badge--grad cta-badge--sm cta-badge--noarrow" href="#agendar">Agendar llamada</a>
+  </div>
+</nav>
 
 <header class="hero">
   <h1>Conseguí <em>más clientes</em> desde Google, <em>sin</em> depender de <em>publicidad</em> paga</h1>
