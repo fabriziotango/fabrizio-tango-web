@@ -15,7 +15,7 @@ const LABELS = {
 };
 
 const TITLES = {
-  diagnostico: "📋 Diagnóstico personalizado",
+  diagnostico: "📋 Interesado en el asistente (cuestionario)",
   agendar: "📞 Agenda de llamada",
   demo: "🤖 Demo del asistente IA"
 };
