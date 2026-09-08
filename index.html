@@ -205,6 +205,11 @@
   .ai-feature h4{font-size:13.5px;font-weight:800;color:var(--blue-deep);margin-bottom:5px;}
   .ai-feature p{font-size:12.5px;line-height:1.5;color:var(--muted);}
 
+  .ai-benefits{margin:26px 0;}
+  .ai-benefit{position:relative;padding:12px 0 12px 26px;border-bottom:1px solid var(--line);font-size:14px;line-height:1.5;color:var(--ink);font-weight:600;}
+  .ai-benefit:last-child{border-bottom:none;}
+  .ai-benefit::before{content:'✓';position:absolute;left:0;top:12px;color:var(--aqua);font-weight:800;}
+
   .ai-security{text-align:center;font-size:12px;color:var(--muted-2);line-height:1.6;max-width:56ch;margin:0 auto 24px;}
 
   @media (max-width:640px){
@@ -377,7 +382,7 @@
 
 <header class="hero">
   <h1>Un asistente que <em>responde y agenda</em> por vos, las 24 horas</h1>
-  <p class="sub">Más clientes y ningún turno perdido, con un panel que además te da CRM, estadísticas y notas para manejar todo tu negocio.</p>
+  <p class="sub">Llevá tu negocio a más clientes cada mes, con un panel donde podés ver tus estadísticas.</p>
   <div class="hero-ctas">
     <a class="cta-badge cta-badge--grad cta-badge--noarrow" href="#agendar">Agendar una llamada</a>
   </div>
@@ -387,21 +392,14 @@
   <section id="asistente">
     <div class="s-head">
       <span class="free-badge">Nuevo</span>
-      <h2>Un asistente que responde y agenda por vos, las 24 horas</h2>
-      <p>Para negocios que viven de agendar clientes.</p>
+      <h2>¿Cómo puedo ayudarte?</h2>
+      <p>Un asistente que responde y agenda tus turnos por WhatsApp, las 24 horas, sin que vos tengas que estar pendiente.</p>
       <div class="ai-tags">
         <span>Peluquerías</span><span>Barberías</span><span>Consultorios</span><span>Estudios jurídicos</span><span>Centros de estética</span><span>Talleres</span><span>Academias</span><span>Veterinarias</span>
       </div>
     </div>
 
     <div class="ai-card">
-      <div class="ai-steps">
-        <div class="ai-step"><span class="ai-step-num">1</span><p>Tu cliente te escribe al WhatsApp de siempre, el número real de tu negocio, no uno nuevo.</p></div>
-        <div class="ai-step"><span class="ai-step-num">2</span><p>Un asistente con inteligencia artificial responde al instante, a cualquier hora, con la info real de tu negocio: horarios, servicios, precios y preguntas frecuentes.</p></div>
-        <div class="ai-step"><span class="ai-step-num">3</span><p>Si el cliente quiere reservar, el asistente revisa la disponibilidad real y agenda el turno solo, sin que nadie tenga que coordinar nada a mano.</p></div>
-        <div class="ai-step"><span class="ai-step-num">4</span><p>Si la consulta es algo que no puede resolver, deriva automáticamente a una persona y te avisa.</p></div>
-      </div>
-
       <div class="wa-demo" id="waDemo">
         <div class="wa-bubble cliente" data-order="1">Hola! ¿Tienen turno para mañana?</div>
         <div class="wa-bubble bot" data-order="2">Hola! Sí, tenemos disponible mañana a las 15:00 y a las 17:00. ¿Cuál te queda mejor?</div>
@@ -409,16 +407,14 @@
         <div class="wa-bubble bot" data-order="4">Listo, tu turno quedó agendado para mañana a las 15:00. ¿Necesitás algo más?</div>
       </div>
 
-      <div class="ai-features">
-        <div class="ai-feature"><h4>Bandeja de WhatsApp</h4><p>Todas las conversaciones en tiempo real, con historial completo, desde la compu o el celular.</p></div>
-        <div class="ai-feature"><h4>Agenda y disponibilidad</h4><p>Configurás los horarios disponibles y ves los próximos turnos de un vistazo.</p></div>
-        <div class="ai-feature"><h4>CRM de leads</h4><p>Cada conversación pasa por un embudo: nuevo, en seguimiento, agendado o perdido.</p></div>
-        <div class="ai-feature"><h4>Seguimientos automáticos</h4><p>Si un cliente no responde, el sistema le vuelve a escribir en el momento justo.</p></div>
-        <div class="ai-feature"><h4>Estadísticas del negocio</h4><p>Turnos por mes, por servicio, ingresos estimados y cuánto resuelve el bot vs. una persona.</p></div>
-        <div class="ai-feature"><h4>Control total</h4><p>Podés silenciar el bot en cualquier conversación puntual y responder vos mismo cuando quieras.</p></div>
+      <div class="ai-benefits">
+        <p class="ai-benefit">Nunca más perdés un cliente por no llegar a contestar a tiempo.</p>
+        <p class="ai-benefit">Los turnos se agendan solos, sin que nadie tenga que coordinar nada a mano.</p>
+        <p class="ai-benefit">Todo tu negocio en un solo panel: conversaciones, agenda, clientes y estadísticas.</p>
+        <p class="ai-benefit">Vos seguís teniendo el control: tomás cualquier conversación cuando quieras.</p>
       </div>
 
-      <p class="ai-security">Cada negocio tiene sus datos completamente aislados de los demás, con tokens cifrados y contraseñas nunca en texto plano. Todo funciona en la nube, con HTTPS en todo el sitio.</p>
+      <p class="ai-security">Datos aislados y cifrados. Todo funciona en la nube, con HTTPS.</p>
 
       <a class="cta-badge cta-badge--grad cta-badge--block cta-badge--noarrow" href="#" id="openDemoModal">Reservar una demo</a>
     </div>
@@ -452,12 +448,13 @@
     </div>
 
     <div class="quiz-step" data-step="3">
-      <p class="quiz-step-q">¿Cuántos turnos agendás por semana aproximadamente?</p>
+      <p class="quiz-step-q">¿Cuánto generás por mes hoy?</p>
       <div class="qual">
-        <button type="button" class="qual-row"><span>Menos de 10</span></button>
-        <button type="button" class="qual-row"><span>Entre 10 y 30</span></button>
-        <button type="button" class="qual-row"><span>Entre 30 y 60</span></button>
-        <button type="button" class="qual-row"><span>Más de 60</span></button>
+        <button type="button" class="qual-row"><span>Menos de US$500 al mes</span></button>
+        <button type="button" class="qual-row"><span>Entre US$500 y US$1.500 al mes</span></button>
+        <button type="button" class="qual-row"><span>Entre US$1.500 y US$3.000 al mes</span></button>
+        <button type="button" class="qual-row"><span>Entre US$3.000 y US$5.000 al mes</span></button>
+        <button type="button" class="qual-row"><span>Más de US$5.000 al mes</span></button>
       </div>
       <button type="button" class="quiz-back">&larr; volver</button>
     </div>
@@ -511,7 +508,7 @@
       <span class="tag">Mi agencia</span>
       <h2>SEO Local Argentina</h2>
       <p>Fundé SEO Local Argentina, la agencia especializada en Google Maps con más fichas creadas de Latinoamérica. Trabajamos con más de 440 negocios y profesionales que confiaron en nuestro trabajo.</p>
-      <p>Ayudando a esos negocios a conseguir más clientes, vi el mismo problema una y otra vez: perdían turnos por no llegar a contestar el WhatsApp a tiempo. Por eso construí este sistema.</p>
+      <p>Dirigiendo mi agencia, encontré el mismo problema una y otra vez: los negocios perdían turnos por no llegar a contestar el WhatsApp a tiempo. Por eso construí este sistema.</p>
       <a class="cta-badge cta-badge--grad agency-link" href="https://seolocalarg.com" target="_blank" rel="noopener">¡Quiero saber más!</a>
     </div>
   </section>
