@@ -21,7 +21,7 @@ const TITLES = {
 };
 
 const FIELD_ORDER = {
-  agendar: ["turno", "nombre", "email", "telefono", "servicio"],
+  agendar: ["turno", "nombre", "email", "telefono", "negocio"],
   diagnostico: ["nombre", "email", "whatsapp", "instagram", "respuestas"],
   demo: ["nombre", "negocio", "whatsapp", "email"]
 };
