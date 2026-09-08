@@ -10,17 +10,20 @@ const LABELS = {
   whatsapp: "WhatsApp",
   instagram: "Instagram",
   servicio: "Servicio",
-  turno: "Turno"
+  turno: "Turno",
+  negocio: "Tipo de negocio"
 };
 
 const TITLES = {
   diagnostico: "📋 Diagnóstico personalizado",
-  agendar: "📞 Agenda de llamada"
+  agendar: "📞 Agenda de llamada",
+  demo: "🤖 Demo del asistente IA"
 };
 
 const FIELD_ORDER = {
   agendar: ["turno", "nombre", "email", "telefono", "servicio"],
-  diagnostico: ["nombre", "email", "whatsapp", "instagram", "respuestas"]
+  diagnostico: ["nombre", "email", "whatsapp", "instagram", "respuestas"],
+  demo: ["nombre", "negocio", "whatsapp", "email"]
 };
 
 async function sendMessage(text) {

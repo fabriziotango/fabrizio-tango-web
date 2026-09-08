@@ -184,6 +184,34 @@
   .cal-card{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:26px;max-width:440px;margin:0 auto;box-shadow:0 20px 44px -28px rgba(5,20,30,0.4);}
   .cal-btn{margin-top:18px;}
 
+  /* ASISTENTE IA */
+  .ai-card{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:32px 26px;box-shadow:0 20px 44px -28px rgba(5,20,30,0.4);}
+  .ai-tags{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:14px;}
+  .ai-tags span{font-size:11px;font-weight:700;color:var(--muted);background:var(--bg-soft);border:1px solid var(--line-2);border-radius:999px;padding:5px 12px;}
+
+  .ai-steps{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-bottom:32px;}
+  .ai-step{display:flex;gap:12px;align-items:flex-start;}
+  .ai-step-num{flex-shrink:0;width:26px;height:26px;border-radius:50%;background:var(--blue-deep);color:#fff;font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center;}
+  .ai-step p{font-size:13.5px;line-height:1.55;color:var(--muted);}
+
+  .wa-demo{max-width:340px;margin:0 auto 32px;background:#EFEAE2;border-radius:12px;padding:16px 12px;border:1px solid var(--line);}
+  .wa-bubble{max-width:82%;padding:9px 12px;border-radius:10px;font-size:13px;line-height:1.4;margin-bottom:10px;opacity:0;transform:translateY(8px);transition:opacity .4s ease,transform .4s ease;}
+  .wa-bubble.in{opacity:1;transform:translateY(0);}
+  .wa-bubble.cliente{background:#fff;color:var(--ink);border-bottom-left-radius:2px;}
+  .wa-bubble.bot{background:#D9FDD3;color:var(--ink);margin-left:auto;border-bottom-right-radius:2px;}
+
+  .ai-features{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-bottom:26px;}
+  .ai-feature{padding:16px;background:var(--bg-soft);border-radius:8px;}
+  .ai-feature h4{font-size:13.5px;font-weight:800;color:var(--blue-deep);margin-bottom:5px;}
+  .ai-feature p{font-size:12.5px;line-height:1.5;color:var(--muted);}
+
+  .ai-security{text-align:center;font-size:12px;color:var(--muted-2);line-height:1.6;max-width:56ch;margin:0 auto 24px;}
+
+  @media (max-width:640px){
+    .ai-steps{grid-template-columns:1fr;}
+    .ai-features{grid-template-columns:1fr;}
+  }
+
   /* CONTACTO — grilla de tarjetas */
   .contact-grid{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;}
   .contact-card{
@@ -388,6 +416,46 @@
     </div>
   </section>
 
+  <section id="asistente">
+    <div class="s-head">
+      <span class="free-badge">Nuevo</span>
+      <h2>Un asistente que responde y agenda por vos, las 24 horas</h2>
+      <p>Para negocios que viven de agendar clientes.</p>
+      <div class="ai-tags">
+        <span>Peluquerías</span><span>Barberías</span><span>Consultorios</span><span>Estudios jurídicos</span><span>Centros de estética</span><span>Talleres</span><span>Academias</span><span>Veterinarias</span>
+      </div>
+    </div>
+
+    <div class="ai-card">
+      <div class="ai-steps">
+        <div class="ai-step"><span class="ai-step-num">1</span><p>Tu cliente te escribe al WhatsApp de siempre, el número real de tu negocio, no uno nuevo.</p></div>
+        <div class="ai-step"><span class="ai-step-num">2</span><p>Un asistente con inteligencia artificial responde al instante, a cualquier hora, con la info real de tu negocio: horarios, servicios, precios y preguntas frecuentes.</p></div>
+        <div class="ai-step"><span class="ai-step-num">3</span><p>Si el cliente quiere reservar, el asistente revisa la disponibilidad real y agenda el turno solo, sin que nadie tenga que coordinar nada a mano.</p></div>
+        <div class="ai-step"><span class="ai-step-num">4</span><p>Si la consulta es algo que no puede resolver, deriva automáticamente a una persona y te avisa.</p></div>
+      </div>
+
+      <div class="wa-demo" id="waDemo">
+        <div class="wa-bubble cliente" data-order="1">Hola! ¿Tienen turno para mañana?</div>
+        <div class="wa-bubble bot" data-order="2">Hola! Sí, tenemos disponible mañana a las 15:00 y a las 17:00. ¿Cuál te queda mejor?</div>
+        <div class="wa-bubble cliente" data-order="3">15:00 dale</div>
+        <div class="wa-bubble bot" data-order="4">Listo, tu turno quedó agendado para mañana a las 15:00. ¿Necesitás algo más?</div>
+      </div>
+
+      <div class="ai-features">
+        <div class="ai-feature"><h4>Bandeja de WhatsApp</h4><p>Todas las conversaciones en tiempo real, con historial completo, desde la compu o el celular.</p></div>
+        <div class="ai-feature"><h4>Agenda y disponibilidad</h4><p>Configurás los horarios disponibles y ves los próximos turnos de un vistazo.</p></div>
+        <div class="ai-feature"><h4>CRM de leads</h4><p>Cada conversación pasa por un embudo: nuevo, en seguimiento, agendado o perdido.</p></div>
+        <div class="ai-feature"><h4>Seguimientos automáticos</h4><p>Si un cliente no responde, el sistema le vuelve a escribir en el momento justo.</p></div>
+        <div class="ai-feature"><h4>Estadísticas del negocio</h4><p>Turnos por mes, por servicio, ingresos estimados y cuánto resuelve el bot vs. una persona.</p></div>
+        <div class="ai-feature"><h4>Control total</h4><p>Podés silenciar el bot en cualquier conversación puntual y responder vos mismo cuando quieras.</p></div>
+      </div>
+
+      <p class="ai-security">Cada negocio tiene sus datos completamente aislados de los demás, con tokens cifrados y contraseñas nunca en texto plano. Todo funciona en la nube, con HTTPS en todo el sitio.</p>
+
+      <a class="cta-badge cta-badge--grad cta-badge--block cta-badge--noarrow" href="#" id="openDemoModal">Reservar una demo</a>
+    </div>
+  </section>
+
   <section id="quiz">
     <div class="s-head">
       <h2>¿No sabés cuál elegir?</h2>
@@ -534,6 +602,29 @@
     </div>
   </div>
 
+  <div class="modal-backdrop" id="demoModal">
+    <div class="modal-card">
+      <button type="button" class="modal-close js-modal-close" aria-label="Cerrar">&times;</button>
+      <div class="modal-banner"></div>
+      <div class="modal-body">
+        <h3 id="demoModalTitle">Reservá tu demo</h3>
+        <form id="demoForm" name="demo" data-netlify="true" netlify-honeypot="dm-hp">
+          <input type="hidden" name="form-name" value="demo">
+          <p style="position:absolute;left:-9999px;"><label>No completar: <input name="dm-hp"></label></p>
+          <div class="field"><label for="dm-nombre">Nombre y Apellido</label><input id="dm-nombre" name="nombre" type="text" placeholder="Tu nombre y apellido" required></div>
+          <div class="field"><label for="dm-negocio">Tipo de negocio</label><input id="dm-negocio" name="negocio" type="text" placeholder="Ej: peluquería, consultorio, taller..." required></div>
+          <div class="field"><label for="dm-whatsapp">Tu número de WhatsApp</label><input id="dm-whatsapp" name="whatsapp" type="tel" placeholder="+54 9 11 1234 5678" required></div>
+          <div class="field"><label for="dm-email">Email</label><input id="dm-email" name="email" type="email" placeholder="tu@email.com"></div>
+          <button type="submit" class="cta-badge cta-badge--grad cta-badge--block cta-badge--noarrow">Reservar demo</button>
+        </form>
+        <div class="agendar-thanks" id="demoThanks" style="display:none;text-align:center;margin-top:4px;">
+          <p style="font-weight:800;font-size:17px;color:var(--blue-deep);margin-bottom:8px;">¡Gracias!</p>
+          <p style="color:var(--muted);font-size:14px;">Recibimos tu solicitud. Te vamos a contactar en breve para coordinar tu demo.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div class="modal-backdrop" id="terminosModal">
     <div class="modal-card modal-card--legal">
       <button type="button" class="modal-close js-modal-close" aria-label="Cerrar">&times;</button>
@@ -629,6 +720,49 @@
     }, {threshold: 0.15});
     document.querySelectorAll('.reveal').forEach(function(el){ revealIO.observe(el); });
   }
+
+  // Demo animada de WhatsApp
+  (function(){
+    var waDemo = document.getElementById('waDemo');
+    if (!waDemo) return;
+    var bubbles = waDemo.querySelectorAll('.wa-bubble');
+    function playDemo(){
+      bubbles.forEach(function(b, i){
+        setTimeout(function(){ b.classList.add('in'); }, i * 900);
+      });
+    }
+    if (reduceMotion || !('IntersectionObserver' in window)) {
+      bubbles.forEach(function(b){ b.classList.add('in'); });
+    } else {
+      var waIO = new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
+          if (entry.isIntersecting) {
+            playDemo();
+            waIO.unobserve(entry.target);
+          }
+        });
+      }, {threshold: 0.4});
+      waIO.observe(waDemo);
+    }
+  })();
+
+  // Modal de reservar demo
+  var demoModal = document.getElementById('demoModal');
+  var openDemoBtn = document.getElementById('openDemoModal');
+  if (openDemoBtn) {
+    openDemoBtn.addEventListener('click', function(e){
+      e.preventDefault();
+      openModal(demoModal);
+    });
+  }
+  var demoFormEl = document.getElementById('demoForm');
+  demoFormEl.addEventListener('submit', function(e){
+    e.preventDefault();
+    submitToNetlify(demoFormEl);
+    demoFormEl.style.display = 'none';
+    document.getElementById('demoModalTitle').style.display = 'none';
+    document.getElementById('demoThanks').style.display = 'block';
+  });
 
   function sendWA(msg){
     if (!WHATSAPP_NUMBER) {
