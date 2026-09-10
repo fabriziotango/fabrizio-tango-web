@@ -236,6 +236,23 @@
   .service-combo p{font-size:14.5px;line-height:1.6;color:var(--muted);text-align:center;max-width:52ch;margin:0 auto;}
   .service-combo .cta-badge{align-self:center;margin-top:6px;}
 
+  .stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+  .stat-card{
+    position:relative;padding:30px 20px 24px;background:var(--panel);border:1px solid var(--line);border-radius:16px;
+    text-align:center;box-shadow:0 20px 44px -28px rgba(5,20,30,0.4);
+  }
+  .stat-dot{
+    position:absolute;top:14px;left:50%;transform:translateX(-50%);
+    width:7px;height:7px;border-radius:50%;background:var(--aqua);
+    animation:badgePulse 1.8s ease-in-out infinite;
+  }
+  .stat-card h3{
+    font-size:clamp(1.7rem,5vw,2.3rem);font-weight:800;
+    background:linear-gradient(90deg,var(--grad-1),var(--grad-3));-webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .stat-card p{margin-top:6px;font-size:12.5px;color:var(--muted);line-height:1.5;}
+  @media (max-width:640px){.stats-grid{grid-template-columns:1fr;}}
+
   /* MISION + AGENCIA */
   .mision{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:40px 32px;text-align:center;box-shadow:0 20px 44px -28px rgba(5,20,30,0.4),0 0 50px -30px rgba(46,116,242,.4);}
   .mision h2{font-size:1.4rem;font-weight:800;letter-spacing:-0.01em;color:var(--blue-deep);}
@@ -467,6 +484,14 @@
       <p>Un solo servicio que te consigue más clientes en Google y responde por vos las 24 horas, para que ninguno se te escape.</p>
     </div>
 
+  </section>
+
+  <section>
+    <div class="stats-grid reveal">
+      <div class="stat-card"><span class="stat-dot"></span><h3>24/7</h3><p>Disponibilidad del asistente de WhatsApp</p></div>
+      <div class="stat-card"><span class="stat-dot"></span><h3>&lt;24 hs</h3><p>Tiempo de respuesta a tu consulta</p></div>
+      <div class="stat-card"><span class="stat-dot"></span><h3>60 min</h3><p>Consultoría inicial, totalmente gratuita</p></div>
+    </div>
   </section>
 
   <section id="quiz">
