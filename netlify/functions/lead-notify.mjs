@@ -11,7 +11,8 @@ const LABELS = {
   instagram: "Instagram",
   servicio: "Servicio",
   turno: "Turno",
-  negocio: "Tipo de negocio"
+  negocio: "Tipo de negocio",
+  negocio_nombre: "Nombre del negocio"
 };
 
 const TITLES = {
@@ -22,7 +23,7 @@ const TITLES = {
 
 const FIELD_ORDER = {
   agendar: ["turno", "nombre", "email", "telefono", "negocio", "instagram"],
-  diagnostico: ["nombre", "email", "whatsapp", "instagram", "respuestas"],
+  diagnostico: ["nombre", "negocio_nombre", "email", "whatsapp", "instagram", "respuestas"],
   demo: ["nombre", "negocio", "whatsapp", "email"]
 };
 
