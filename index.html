@@ -194,13 +194,20 @@
   @media (prefers-reduced-motion:reduce){.free-badge::before{animation:none;box-shadow:0 0 0 3px rgba(18,191,160,.2);}}
   .s-head p{margin-top:12px;color:var(--muted);font-size:15px;line-height:1.6;}
 
-  .service-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;}
-  .service{padding:34px 28px;background:var(--panel);border:1.5px solid var(--line);border-radius:16px;display:flex;flex-direction:column;gap:14px;box-shadow:0 20px 44px -28px rgba(5,20,30,0.4),0 0 40px -30px rgba(18,191,160,.5);transition:border-color .25s ease,box-shadow .25s ease,transform .25s ease;}
-  .service:hover{border-color:var(--aqua);transform:translateY(-2px);box-shadow:0 0 0 3px rgba(18,191,160,.15),0 24px 48px -22px rgba(5,20,30,.35);}
   .tag{font-size:10.8px;font-weight:800;letter-spacing:0.05em;text-transform:uppercase;color:var(--aqua);display:inline-block;margin-bottom:10px;}
-  .service h3{font-size:20px;font-weight:800;color:var(--blue-deep);}
-  .service p{font-size:14.5px;line-height:1.6;color:var(--muted);flex:1;}
-  .service .cta-badge{margin-top:4px;}
+
+  .service-combo{
+    position:relative;padding:36px 28px 30px;background:var(--panel);max-width:520px;margin:0 auto;
+    border-radius:16px;border:1.5px solid var(--aqua);display:flex;flex-direction:column;gap:14px;
+    box-shadow:0 24px 50px -26px rgba(5,20,30,0.45),0 0 60px -22px rgba(18,191,160,.55);
+  }
+  .service-combo::before{
+    content:'';position:absolute;inset:-1.5px;border-radius:16px;padding:1.5px;z-index:-1;
+    background:linear-gradient(120deg,var(--grad-1),var(--grad-3));
+  }
+  .service-combo h3{font-size:22px;font-weight:800;color:var(--blue-deep);text-align:center;}
+  .service-combo p{font-size:14.5px;line-height:1.6;color:var(--muted);text-align:center;max-width:52ch;margin:0 auto;}
+  .service-combo .cta-badge{align-self:center;margin-top:6px;}
 
   /* MISION + AGENCIA */
   .mision{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:40px 32px;text-align:center;box-shadow:0 20px 44px -28px rgba(5,20,30,0.4),0 0 50px -30px rgba(46,116,242,.4);}
@@ -393,7 +400,6 @@
   .foot-bottom a:hover{color:var(--ink);}
 
   @media (max-width:640px){
-    .service-grid{grid-template-columns:1fr;}
     .link-grid{grid-template-columns:repeat(2,1fr);}
     .topnav-inner{padding:12px 16px;}
     .topnav-brand{font-size:13px;gap:7px;}
@@ -432,19 +438,11 @@
       <h2>Cómo puedo ayudarte?</h2>
     </div>
 
-    <div class="service-grid">
-      <div class="service reveal">
-        <span class="tag">Visibilidad en Google Maps</span>
-        <h3>SEO Local</h3>
-        <p>Que tu negocio aparezca en los primeros resultados cuando alguien te busca, funcionando como un vendedor 24/7 que nunca deja de traer visitas.</p>
-        <a class="cta-badge cta-badge--grad cta-badge--sm" href="https://seolocalarg.com/" target="_blank" rel="noopener">¡Quiero saber más!</a>
-      </div>
-      <div class="service reveal">
-        <span class="tag">Atención y agenda automática</span>
-        <h3>Asistente de WhatsApp con IA</h3>
-        <p>Respondé y agendá turnos por WhatsApp, las 24 horas, con un CRM incluido para ver las estadísticas de tu negocio.</p>
-        <a class="cta-badge cta-badge--grad cta-badge--sm" href="#" id="openDemoModal">¡Quiero saber más!</a>
-      </div>
+    <div class="service-combo reveal">
+      <span class="tag" style="text-align:center;">Sistema completo</span>
+      <h3>SEO Local + Asistente de WhatsApp con IA</h3>
+      <p>Un solo servicio que te consigue más clientes en Google y responde por vos las 24 horas, para que ninguno se te escape.</p>
+      <a class="cta-badge cta-badge--grad" href="#agendar">Agendar llamada</a>
     </div>
 
   </section>
