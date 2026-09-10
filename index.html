@@ -125,13 +125,13 @@
   @media (hover:hover) and (pointer:fine){
     body::before{
       content:'';position:fixed;inset:0;z-index:1;pointer-events:none;
-      background:radial-gradient(560px circle at var(--mx,50%) var(--my,20%),rgba(18,191,160,.09),transparent 45%);
+      background:radial-gradient(620px circle at var(--mx,50%) var(--my,20%),rgba(18,191,160,.13),transparent 45%);
     }
     .spot-card{position:relative;isolation:isolate;overflow:hidden;}
     .spot-card::after{
       content:'';position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:0;
-      background:radial-gradient(220px circle at var(--sx,50%) var(--sy,50%),rgba(255,255,255,.10),transparent 65%);
-      opacity:0;transition:opacity .25s ease;
+      background:radial-gradient(280px circle at var(--sx,50%) var(--sy,50%),rgba(94,220,200,.30),rgba(46,116,242,.12) 45%,transparent 68%);
+      opacity:0;transition:opacity .3s ease;
     }
     .spot-card:hover::after{opacity:1;}
     .spot-card>*{position:relative;z-index:1;}
@@ -142,7 +142,7 @@
   .wrap{max-width:760px;margin:0 auto;padding:0 24px;}
 
   /* NAVBAR */
-  .topnav{position:sticky;top:0;z-index:50;background:var(--bg);border-bottom:1px solid var(--line);}
+  .topnav{position:sticky;top:0;z-index:50;background:rgba(11,19,48,.72);backdrop-filter:blur(14px) saturate(140%);-webkit-backdrop-filter:blur(14px) saturate(140%);border-bottom:1px solid var(--line);}
   .topnav-inner{max-width:1080px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;}
   .topnav-brand{display:inline-flex;align-items:center;gap:9px;text-decoration:none;color:var(--blue-deep);font-weight:800;font-size:15px;letter-spacing:-0.01em;}
   .topnav-brand img{border-radius:50%;display:block;}
@@ -471,8 +471,8 @@
 
   <section id="quiz">
     <div class="s-head">
-      <h2>No sabés cuál elegir?</h2>
-      <p>Respondé 3 preguntas rápidas para que sepa cómo ayudarte mejor.</p>
+      <h2>Veamos si es para tu negocio</h2>
+      <p>Respondé 3 preguntas rápidas para que te arme una propuesta a medida.</p>
     </div>
     <div class="cal-card reveal spot-card">
     <div class="quiz-progress" id="quizProgress"><span></span><span></span><span></span></div>
