@@ -53,7 +53,7 @@
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "¿Necesito saber de tecnología para usarlo?",
+      "name": "Necesito saber de tecnología para usarlo?",
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "No. El panel es simple y te acompaño en toda la configuración inicial."
@@ -61,7 +61,7 @@
     },
     {
       "@type": "Question",
-      "name": "¿Trabajás solo con negocios de Argentina?",
+      "name": "Trabajás solo con negocios de Argentina?",
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "No, trabajo con negocios y profesionales independientes de toda Latinoamérica."
@@ -69,7 +69,7 @@
     },
     {
       "@type": "Question",
-      "name": "¿El asistente reemplaza totalmente la atención humana?",
+      "name": "El asistente reemplaza totalmente la atención humana?",
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "No. Podés silenciarlo en cualquier conversación puntual y responder vos mismo cuando quieras, y el sistema deriva a una persona cuando no puede resolver algo."
@@ -77,7 +77,7 @@
     },
     {
       "@type": "Question",
-      "name": "¿Tengo que cambiar mi número de WhatsApp?",
+      "name": "Tengo que cambiar mi número de WhatsApp?",
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "No, se conecta a tu número actual. Tus clientes te siguen escribiendo al mismo lugar de siempre."
@@ -85,7 +85,7 @@
     },
     {
       "@type": "Question",
-      "name": "¿Mis datos y los de mis clientes están seguros?",
+      "name": "Mis datos y los de mis clientes están seguros?",
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "Sí. La información de cada empresa está aislada a nivel de base de datos, y los datos sensibles se guardan cifrados."
@@ -114,7 +114,12 @@
   }
   *{box-sizing:border-box;}
   html{background:var(--bg);}
-  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);-webkit-font-smoothing:antialiased;}
+  body{
+    margin:0;color:var(--ink);font-family:var(--font);-webkit-font-smoothing:antialiased;
+    background:
+      radial-gradient(circle at 1px 1px, rgba(255,255,255,0.045) 1px, transparent 0) 0 0/26px 26px,
+      var(--bg);
+  }
   a{color:inherit;text-decoration:none;}
   h1,h2,h3,p{margin:0;}
   h1,h2,h3{font-family:var(--font-heading);font-weight:800 !important;}
@@ -128,7 +133,17 @@
   .topnav-brand img{border-radius:50%;display:block;}
 
   /* HERO — carodubi.com style, fondo blanco */
-  .hero{padding:76px 24px 76px;text-align:center;background:radial-gradient(ellipse 70% 60% at 50% 0%,rgba(18,191,160,.16),transparent 70%),var(--bg);position:relative;}
+  .hero{
+    padding:76px 24px 76px;text-align:center;position:relative;overflow:hidden;
+    background:
+      radial-gradient(ellipse 60% 55% at 18% -10%,rgba(46,116,242,.20),transparent 60%),
+      radial-gradient(ellipse 70% 60% at 82% 0%,rgba(18,191,160,.18),transparent 65%),
+      var(--bg);
+  }
+  .hero::before{
+    content:'';position:absolute;inset:0;pointer-events:none;
+    background:radial-gradient(circle at 50% 120%,rgba(18,191,160,.10),transparent 55%);
+  }
   .wrap>section:first-of-type{padding-top:0;}
   .eyebrow{display:inline-block;font-size:12.5px;font-weight:800;letter-spacing:0.06em;text-transform:uppercase;color:var(--aqua);margin-bottom:18px;}
   .avatar{width:104px;height:104px;border-radius:50%;object-fit:cover;border:3px solid var(--panel-2);margin:0 auto 22px;}
@@ -145,11 +160,15 @@
     border:none;cursor:pointer;font-family:var(--font);
     transition:transform .15s ease,box-shadow .15s ease;
   }
-  .cta-badge::after{content:'\2192';font-size:15px;line-height:1;}
+  .cta-badge::after{content:'\2192';font-size:15px;line-height:1;position:relative;z-index:1;}
   .cta-badge:hover{transform:translateY(-2px);}
   .cta-badge:active{transform:translateY(0) scale(.98);}
-  .cta-badge--grad{background:linear-gradient(100deg,var(--grad-1),var(--grad-3));color:#fff;box-shadow:0 14px 28px -14px rgba(33,88,214,.55);}
+  .cta-badge span,.cta-badge{position:relative;}
+  .cta-badge--grad{background:linear-gradient(100deg,var(--grad-1),var(--grad-3));color:#fff;box-shadow:0 14px 28px -14px rgba(33,88,214,.55);position:relative;overflow:hidden;}
+  .cta-badge--grad::before{content:'';position:absolute;top:0;left:-60%;width:40%;height:100%;background:linear-gradient(120deg,transparent,rgba(255,255,255,.4),transparent);transform:skewX(-20deg);transition:left .55s ease;}
+  .cta-badge--grad:hover::before{left:120%;}
   .cta-badge--grad:hover{box-shadow:0 20px 36px -16px rgba(33,88,214,.65);}
+  @media (prefers-reduced-motion:reduce){.cta-badge--grad::before{display:none;}}
   .cta-badge--white{background:#fff;color:var(--ink);box-shadow:0 14px 28px -14px rgba(5,20,30,.35);}
   .cta-badge--white:hover{box-shadow:0 20px 36px -16px rgba(5,20,30,.4);}
   .cta-badge--block{display:flex;width:100%;}
@@ -176,7 +195,7 @@
   .s-head p{margin-top:12px;color:var(--muted);font-size:15px;line-height:1.6;}
 
   .service-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;}
-  .service{padding:34px 28px;background:var(--panel);border:1.5px solid var(--line);border-radius:16px;display:flex;flex-direction:column;gap:14px;box-shadow:0 20px 44px -28px rgba(5,20,30,0.4);transition:border-color .25s ease,box-shadow .25s ease,transform .25s ease;}
+  .service{padding:34px 28px;background:var(--panel);border:1.5px solid var(--line);border-radius:16px;display:flex;flex-direction:column;gap:14px;box-shadow:0 20px 44px -28px rgba(5,20,30,0.4),0 0 40px -30px rgba(18,191,160,.5);transition:border-color .25s ease,box-shadow .25s ease,transform .25s ease;}
   .service:hover{border-color:var(--aqua);transform:translateY(-2px);box-shadow:0 0 0 3px rgba(18,191,160,.15),0 24px 48px -22px rgba(5,20,30,.35);}
   .tag{font-size:10.8px;font-weight:800;letter-spacing:0.05em;text-transform:uppercase;color:var(--aqua);display:inline-block;margin-bottom:10px;}
   .service h3{font-size:20px;font-weight:800;color:var(--blue-deep);}
@@ -184,7 +203,7 @@
   .service .cta-badge{margin-top:4px;}
 
   /* MISION + AGENCIA */
-  .mision{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:40px 32px;text-align:center;box-shadow:0 20px 44px -28px rgba(5,20,30,0.4);}
+  .mision{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:40px 32px;text-align:center;box-shadow:0 20px 44px -28px rgba(5,20,30,0.4),0 0 50px -30px rgba(46,116,242,.4);}
   .mision h2{font-size:1.4rem;font-weight:800;letter-spacing:-0.01em;color:var(--blue-deep);}
   .mision p{margin-top:14px;font-size:14.5px;line-height:1.7;color:var(--muted);max-width:56ch;margin-left:auto;margin-right:auto;}
   .mision p+p{margin-top:12px;}
@@ -194,9 +213,9 @@
 
   /* AGENDAR */
 
-  .cal-card{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:32px;max-width:480px;margin:0 auto;box-shadow:0 20px 44px -28px rgba(5,20,30,0.4);}
+  .cal-card{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:32px;max-width:480px;margin:0 auto;box-shadow:0 20px 44px -28px rgba(5,20,30,0.4),0 0 50px -28px rgba(46,116,242,.45);position:relative;}
 
-  .perks-card{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:32px;max-width:480px;margin:0 auto 24px;box-shadow:0 20px 44px -28px rgba(5,20,30,0.4);}
+  .perks-card{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:32px;max-width:480px;margin:0 auto 24px;box-shadow:0 20px 44px -28px rgba(5,20,30,0.4),0 0 50px -28px rgba(18,191,160,.45);}
   .perks-eyebrow{font-size:11px;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;color:var(--aqua);}
   .perks-card h3{margin-top:10px;font-size:22px;font-weight:800;color:var(--blue-deep);}
   .perks-card h3 span{color:var(--muted-2);}
@@ -354,7 +373,7 @@
   .cert-pill img{max-width:56px;max-height:40px;object-fit:contain;}
 
   /* FAQ */
-  .faq{background:var(--panel);border:1px solid var(--line);border-radius:8px;overflow:hidden;box-shadow:0 20px 44px -28px rgba(5,20,30,0.4);}
+  .faq{background:var(--panel);border:1px solid var(--line);border-radius:8px;overflow:hidden;box-shadow:0 20px 44px -28px rgba(5,20,30,0.4),0 0 50px -30px rgba(18,191,160,.4);}
   .faq details{border-top:1px solid var(--line);}
   .faq details:first-child{border-top:none;}
   .faq summary{padding:17px 20px;font-size:13.5px;font-weight:700;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;color:var(--ink);}
@@ -403,14 +422,14 @@
 </nav>
 
 <header class="hero">
-  <h1>Conseguí más clientes y generá <em>más de US$5.000/mes extra</em></h1>
+  <h1>Conseguí más clientes y generá <em>más de US$<span class="count-up" data-target="5000">0</span>/mes extra</em></h1>
   <p class="sub">SEO Local para que te encuentren en Google, y un asistente de WhatsApp con IA que responde por vos las 24 horas.</p>
 </header>
 
 <div class="wrap">
   <section id="asistente">
     <div class="s-head">
-      <h2>¿Cómo puedo ayudarte?</h2>
+      <h2>Cómo puedo ayudarte?</h2>
     </div>
 
     <div class="service-grid">
@@ -432,14 +451,14 @@
 
   <section id="quiz">
     <div class="s-head">
-      <h2>¿No sabés cuál elegir?</h2>
+      <h2>No sabés cuál elegir?</h2>
       <p>Respondé 3 preguntas rápidas para que sepa cómo ayudarte mejor.</p>
     </div>
-    <div class="cal-card">
+    <div class="cal-card reveal">
     <div class="quiz-progress" id="quizProgress"><span></span><span></span><span></span></div>
 
     <div class="quiz-step active" data-step="1">
-      <p class="quiz-step-q">¿Qué necesita tu negocio hoy?</p>
+      <p class="quiz-step-q">Qué necesita tu negocio hoy?</p>
       <div class="qual">
         <button type="button" class="qual-row"><span>Que me encuentren más clientes en Google</span></button>
         <button type="button" class="qual-row"><span>Automatizar la atención y los turnos por WhatsApp</span></button>
@@ -449,7 +468,7 @@
     </div>
 
     <div class="quiz-step" data-step="2">
-      <p class="quiz-step-q">¿Qué tipo de empresa tenés?</p>
+      <p class="quiz-step-q">Qué tipo de empresa tenés?</p>
       <div class="qual">
         <button type="button" class="qual-row"><span>Un negocio con local u oficina, o que agenda turnos con clientes</span></button>
         <button type="button" class="qual-row"><span>Una empresa que vende a otras empresas (B2B), sin atención al público</span></button>
@@ -460,7 +479,7 @@
     </div>
 
     <div class="quiz-step" data-step="3">
-      <p class="quiz-step-q">¿Cuánto generás por mes hoy?</p>
+      <p class="quiz-step-q">Cuánto generás por mes hoy?</p>
       <div class="qual">
         <button type="button" class="qual-row"><span>Menos de US$500 al mes</span></button>
         <button type="button" class="qual-row"><span>Entre US$500 y US$1.500 al mes</span></button>
@@ -472,7 +491,7 @@
     </div>
 
     <div class="quiz-final" id="quizFinal">
-      <h3 id="quizFinalTitle">¿A dónde te contactamos?</h3>
+      <h3 id="quizFinalTitle">A dónde te contactamos?</h3>
       <form id="leadForm" class="lead-form" name="diagnostico" data-netlify="true" netlify-honeypot="lf-hp">
         <input type="hidden" name="form-name" value="diagnostico">
         <p style="position:absolute;left:-9999px;"><label>No completar: <input name="lf-hp"></label></p>
@@ -532,7 +551,7 @@
       <h2>Reservá tu llamada de consultoría</h2>
     </div>
 
-    <div class="perks-card">
+    <div class="perks-card reveal">
       <span class="perks-eyebrow">En la llamada</span>
       <h3>Vas a recibir <span>3 cosas</span></h3>
       <div class="perk">
@@ -549,7 +568,7 @@
       </div>
     </div>
 
-    <div class="cal-card">
+    <div class="cal-card reveal">
       <div class="cal-days" id="calDays"></div>
       <div class="cal-times" id="calTimes">
         <button type="button" class="cal-time" data-time="9:00">9:00</button>
@@ -651,11 +670,11 @@
       <h2>Preguntas frecuentes</h2>
     </div>
     <div class="faq reveal">
-      <details><summary>¿Necesito saber de tecnología para usarlo?</summary><div class="a">No. El panel es simple y te acompaño en toda la configuración inicial.</div></details>
-      <details><summary>¿Trabajás solo con negocios de Argentina?</summary><div class="a">No, trabajo con negocios y profesionales independientes de toda Latinoamérica.</div></details>
-      <details><summary>¿El asistente reemplaza totalmente la atención humana?</summary><div class="a">No. Podés silenciarlo en cualquier conversación puntual y responder vos mismo cuando quieras, y el sistema deriva a una persona cuando no puede resolver algo.</div></details>
-      <details><summary>¿Tengo que cambiar mi número de WhatsApp?</summary><div class="a">No, se conecta a tu número actual. Tus clientes te siguen escribiendo al mismo lugar de siempre.</div></details>
-      <details><summary>¿Mis datos y los de mis clientes están seguros?</summary><div class="a">Sí. La información de cada empresa está aislada a nivel de base de datos, y los datos sensibles se guardan cifrados.</div></details>
+      <details><summary>Necesito saber de tecnología para usarlo?</summary><div class="a">No. El panel es simple y te acompaño en toda la configuración inicial.</div></details>
+      <details><summary>Trabajás solo con negocios de Argentina?</summary><div class="a">No, trabajo con negocios y profesionales independientes de toda Latinoamérica.</div></details>
+      <details><summary>El asistente reemplaza totalmente la atención humana?</summary><div class="a">No. Podés silenciarlo en cualquier conversación puntual y responder vos mismo cuando quieras, y el sistema deriva a una persona cuando no puede resolver algo.</div></details>
+      <details><summary>Tengo que cambiar mi número de WhatsApp?</summary><div class="a">No, se conecta a tu número actual. Tus clientes te siguen escribiendo al mismo lugar de siempre.</div></details>
+      <details><summary>Mis datos y los de mis clientes están seguros?</summary><div class="a">Sí. La información de cada empresa está aislada a nivel de base de datos, y los datos sensibles se guardan cifrados.</div></details>
     </div>
   </section>
 
@@ -665,7 +684,7 @@
 <footer>
   <div class="wrap">
     <div class="s-head"><h2>Contacto</h2></div>
-    <div class="contact-grid">
+    <div class="contact-grid reveal">
       <a class="contact-card" href="https://www.linkedin.com/in/fabriziotango/" target="_blank" rel="noopener" aria-label="LinkedIn">
         <svg viewBox="0 0 24 24"><rect x="3.3" y="3.3" width="17.4" height="17.4" rx="4" fill="none" stroke="currentColor" stroke-width="1.6"/><rect x="7.4" y="10.2" width="1.9" height="6.3" rx="0.3" fill="currentColor"/><circle cx="8.35" cy="7.5" r="1.05" fill="currentColor"/><path d="M11.3 10.2h1.85v1.2h.03c.26-.5.9-1.3 1.95-1.3 2.1 0 2.5 1.35 2.5 3.15v3.25h-1.95v-2.9c0-.7-.02-1.6-.98-1.6-.98 0-1.13.76-1.13 1.55v2.95h-1.95v-6.3z" fill="currentColor"/></svg>
       </a>
@@ -707,6 +726,40 @@
     }, {threshold: 0.15});
     document.querySelectorAll('.reveal').forEach(function(el){ revealIO.observe(el); });
   }
+
+  // Contador animado de la cifra del hero
+  (function(){
+    var el = document.querySelector('.count-up');
+    if (!el) return;
+    var target = parseInt(el.getAttribute('data-target'), 10) || 0;
+    function format(n){ return n.toLocaleString('es-AR'); }
+    function animate(){
+      var start = null;
+      var duration = 1400;
+      function step(ts){
+        if (!start) start = ts;
+        var progress = Math.min((ts - start) / duration, 1);
+        var eased = 1 - Math.pow(1 - progress, 3);
+        el.textContent = format(Math.floor(eased * target));
+        if (progress < 1) requestAnimationFrame(step);
+        else el.textContent = format(target);
+      }
+      requestAnimationFrame(step);
+    }
+    if (reduceMotion || !('IntersectionObserver' in window)) {
+      el.textContent = format(target);
+    } else {
+      var countIO = new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
+          if (entry.isIntersecting) {
+            animate();
+            countIO.unobserve(entry.target);
+          }
+        });
+      }, {threshold: 0.5});
+      countIO.observe(el);
+    }
+  })();
 
   // Demo animada de WhatsApp
   (function(){
