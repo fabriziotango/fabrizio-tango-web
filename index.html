@@ -149,7 +149,7 @@
   .avatar{width:104px;height:104px;border-radius:50%;object-fit:cover;border:3px solid var(--panel-2);margin:0 auto 22px;}
   .hero h1{font-size:clamp(1.45rem,6.2vw,3rem);font-weight:800;letter-spacing:-0.02em;text-wrap:balance;color:var(--blue-deep);}
   .hero h1 em{font-style:normal;color:var(--aqua);text-shadow:0 0 30px rgba(18,191,160,.55),0 0 60px rgba(18,191,160,.3);}
-  .count-up{display:inline-block;min-width:5ch;text-align:right;font-variant-numeric:tabular-nums;}
+  .count-up{font-variant-numeric:tabular-nums;}
   .hero p.sub{margin:16px auto 0;max-width:44ch;font-size:16px;line-height:1.6;color:var(--muted);}
   .hero-ctas{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:30px;}
   .hero-trust{margin-top:22px;font-size:12px;font-weight:700;letter-spacing:0.02em;color:var(--muted-2);}
@@ -694,15 +694,16 @@
     var el = document.querySelector('.count-up');
     if (!el) return;
     var target = parseInt(el.getAttribute('data-target'), 10) || 0;
+    var from = Math.round(target * 0.82);
     function format(n){ return n.toLocaleString('es-AR'); }
     function animate(){
       var start = null;
-      var duration = 4200;
+      var duration = 2600;
       function step(ts){
         if (!start) start = ts;
         var progress = Math.min((ts - start) / duration, 1);
         var eased = 1 - Math.pow(1 - progress, 1.6);
-        el.textContent = format(Math.floor(eased * target));
+        el.textContent = format(Math.floor(from + eased * (target - from)));
         if (progress < 1) requestAnimationFrame(step);
         else el.textContent = format(target);
       }
