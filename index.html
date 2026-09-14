@@ -243,20 +243,25 @@
   @media (prefers-reduced-motion:reduce){.stats-burst-dots{animation:none;opacity:.8;}}
   .stats-grid{position:relative;display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
   .stat-card{
-    position:relative;padding:30px 20px 24px;background:var(--panel);border:1px solid var(--line);border-radius:16px;
+    position:relative;padding:40px 24px 32px;background:var(--panel);border:1px solid var(--line);border-radius:16px;
     text-align:center;box-shadow:0 20px 44px -28px rgba(5,20,30,0.4);
+    overflow:hidden;transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease;
+    will-change:transform;
   }
-  .stat-dot{
-    position:absolute;top:14px;left:50%;transform:translateX(-50%);
-    width:7px;height:7px;border-radius:50%;background:var(--aqua);
-    animation:badgePulse 1.8s ease-in-out infinite;
+  .stat-card::after{
+    content:'';position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:0;
+    background:radial-gradient(260px circle at var(--mx,50%) var(--my,50%),rgba(18,191,160,.22),transparent 60%);
+    opacity:0;transition:opacity .3s ease;
   }
+  .stat-card:hover::after{opacity:1;}
+  .stat-card:hover{border-color:var(--aqua);box-shadow:0 0 0 3px rgba(18,191,160,.12),0 24px 48px -22px rgba(5,20,30,.4);}
+  @media (prefers-reduced-motion:reduce){.stat-card{transition:none;}}
   .stat-card h3{
-    font-size:clamp(1.7rem,5vw,2.3rem);font-weight:800;
+    position:relative;font-size:clamp(2.6rem,8vw,3.8rem);font-weight:800;line-height:1;
     background:linear-gradient(90deg,var(--grad-1),var(--grad-3));-webkit-background-clip:text;background-clip:text;color:transparent;
   }
-  .stat-card p{margin-top:6px;font-size:12.5px;color:var(--muted);line-height:1.5;}
-  .stat-source{display:block;margin-top:10px;font-size:10.5px;color:var(--muted-2);font-style:italic;}
+  .stat-card p{position:relative;margin-top:12px;font-size:14px;color:var(--ink);line-height:1.5;font-weight:600;}
+  .stats-source-line{margin-top:18px;text-align:center;font-size:11px;color:var(--muted-2);font-style:italic;}
   @media (max-width:640px){.stats-grid{grid-template-columns:1fr;}}
 
   /* MISION + AGENCIA */
@@ -509,10 +514,11 @@
         </g>
       </svg>
       <div class="stats-grid reveal">
-        <div class="stat-card"><span class="stat-dot"></span><h3>76%</h3><p>de las búsquedas "cerca de mí" terminan en una visita al negocio en menos de 24 horas</p><span class="stat-source">Fuente: Google / Think with Google</span></div>
-        <div class="stat-card"><span class="stat-dot"></span><h3>21x</h3><p>más chances de cerrar un cliente si le respondés en los primeros 5 minutos, en vez de esperar 30</p><span class="stat-source">Fuente: estudios de respuesta a leads</span></div>
-        <div class="stat-card"><span class="stat-dot"></span><h3>24/7</h3><p>Disponibilidad del asistente de WhatsApp, todos los días</p><span class="stat-source">Compromiso propio</span></div>
+        <div class="stat-card"><h3>76%</h3><p>Te encuentran y te visitan en menos de 24 horas</p></div>
+        <div class="stat-card"><h3>21x</h3><p>Más chances de cerrar la venta si respondés rápido</p></div>
+        <div class="stat-card"><h3>24/7</h3><p>Tu negocio nunca deja de responder</p></div>
       </div>
+      <p class="stats-source-line">Fuentes: Google / Think with Google, estudios de respuesta a leads.</p>
     </div>
   </section>
 
@@ -747,6 +753,25 @@
       });
     }, {threshold: 0.15});
     document.querySelectorAll('.reveal').forEach(function(el){ revealIO.observe(el); });
+  }
+
+  // Efecto de cursor en las cards de estadisticas (brillo + inclinacion sutil)
+  if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+    document.querySelectorAll('.stat-card').forEach(function(card){
+      card.addEventListener('mousemove', function(e){
+        var rect = card.getBoundingClientRect();
+        var x = e.clientX - rect.left;
+        var y = e.clientY - rect.top;
+        card.style.setProperty('--mx', x + 'px');
+        card.style.setProperty('--my', y + 'px');
+        var cx = x / rect.width - 0.5;
+        var cy = y / rect.height - 0.5;
+        card.style.transform = 'perspective(600px) rotateY(' + (cx * 8) + 'deg) rotateX(' + (cy * -8) + 'deg) translateY(-2px)';
+      });
+      card.addEventListener('mouseleave', function(){
+        card.style.transform = '';
+      });
+    });
   }
 
   // Contador animado de la cifra del hero
