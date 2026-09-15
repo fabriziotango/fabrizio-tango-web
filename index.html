@@ -236,40 +236,21 @@
   .service-combo p{font-size:14.5px;line-height:1.6;color:var(--muted);text-align:center;max-width:52ch;margin:0 auto;}
   .service-combo .cta-badge{align-self:center;margin-top:6px;}
 
-  .stats-wrap{position:relative;padding:60px 24px 40px;overflow:hidden;border-radius:24px;background:radial-gradient(120% 100% at 50% 0%,var(--bg-soft) 0%,var(--bg) 70%);}
-  .stats-flow{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden;border-radius:inherit;}
-  .stats-flow::before,.stats-flow::after{
-    content:'';position:absolute;width:150%;height:150%;left:-25%;top:-45%;
-    background:conic-gradient(from 0deg,transparent 0deg,rgba(22,224,190,.4) 55deg,transparent 130deg,transparent 200deg,rgba(46,116,242,.4) 260deg,transparent 330deg,transparent 360deg);
-    filter:blur(55px);animation:statsFlowSpin 22s linear infinite;
-  }
-  .stats-flow::after{left:-45%;top:-25%;animation-duration:30s;animation-direction:reverse;opacity:.65;}
-  @keyframes statsFlowSpin{to{transform:rotate(360deg);}}
-  @media (prefers-reduced-motion:reduce){.stats-flow::before,.stats-flow::after{animation:none;}}
-  .stats-grid{position:relative;z-index:1;display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
-  .stat-card{
-    position:relative;z-index:1;padding:40px 24px 32px;background:rgba(17,25,58,.55);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
-    border:1px solid var(--line);border-radius:16px;
-    text-align:center;box-shadow:0 20px 44px -28px rgba(5,20,30,0.4);
-    overflow:hidden;transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease;
-    will-change:transform;
-  }
-  .stat-card::after{
-    content:'';position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:0;
-    background:radial-gradient(260px circle at var(--mx,50%) var(--my,50%),rgba(18,191,160,.22),transparent 60%);
-    opacity:0;transition:opacity .3s ease;
-  }
-  .stat-card:hover::after{opacity:1;}
-  .stat-card:hover{border-color:var(--aqua);box-shadow:0 0 0 3px rgba(18,191,160,.12),0 24px 48px -22px rgba(5,20,30,.4);}
-  @media (prefers-reduced-motion:reduce){.stat-card{transition:none;}}
+  .stats-wrap{position:relative;padding:0 24px 8px;overflow:hidden;}
+  .stats-flow{position:absolute;top:-30px;left:0;width:100%;height:220px;z-index:0;pointer-events:none;overflow:visible;}
+  .stats-flow svg{width:100%;height:100%;animation:statsFlowDrift 16s ease-in-out infinite alternate;}
+  @keyframes statsFlowDrift{from{transform:translateX(-1.5%);}to{transform:translateX(1.5%);}}
+  @media (prefers-reduced-motion:reduce){.stats-flow svg{animation:none;}}
+  .stats-grid{position:relative;z-index:1;display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin-top:150px;}
+  .stat-card{text-align:left;}
   .stat-card h3{
-    position:relative;font-size:clamp(1.7rem,5vw,2.6rem);font-weight:800;line-height:1.15;
-    overflow-wrap:break-word;
+    font-size:clamp(1.9rem,3.4vw,2.75rem);font-weight:700;line-height:1.1;white-space:nowrap;
     background:linear-gradient(90deg,var(--grad-1),var(--grad-3));-webkit-background-clip:text;background-clip:text;color:transparent;
   }
-  .stat-card p{position:relative;margin-top:12px;font-size:14px;color:var(--ink);line-height:1.5;font-weight:600;}
-  .stats-source-line{position:relative;z-index:1;margin-top:18px;text-align:center;font-size:11px;color:var(--muted-2);font-style:italic;}
-  @media (max-width:640px){.stats-grid{grid-template-columns:1fr;}}
+  .stat-card p{margin-top:10px;font-size:14px;color:var(--muted);line-height:1.5;font-weight:500;}
+  .stats-source-line{position:relative;z-index:1;margin-top:28px;text-align:left;font-size:11px;color:var(--muted-2);font-style:italic;}
+  @media (max-width:900px){.stat-card h3{white-space:normal;}}
+  @media (max-width:640px){.stats-grid{grid-template-columns:1fr;margin-top:180px;gap:28px;}.stat-card{text-align:center;}.stats-source-line{text-align:center;}}
 
   /* MISION + AGENCIA */
   .mision{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:40px 32px;text-align:center;box-shadow:0 20px 44px -28px rgba(5,20,30,0.4),0 0 50px -30px rgba(46,116,242,.4);}
@@ -506,7 +487,7 @@
 
   <section>
     <div class="stats-wrap">
-      <div class="stats-flow" aria-hidden="true"></div>
+      <div class="stats-flow" aria-hidden="true"><svg viewBox="0 0 900 240" preserveAspectRatio="xMidYMin slice" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="ribbonGrad" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#16E0BE"/><stop offset="0.5" stop-color="#12C4D9"/><stop offset="1" stop-color="#2158D6"/></linearGradient></defs><g fill="none" stroke="url(#ribbonGrad)" stroke-width="1"><path d="M0.0,153.5 C172.8,153.5 201.6,30.8 288.0,30.8 C423.0,30.8 504.0,-35.8 558.0,-35.8 C729.0,-35.8 797.4,17.7 900.0,17.7" opacity="0.10"/><path d="M0.0,154.4 C172.8,154.4 201.6,32.6 288.0,32.6 C423.0,32.6 504.0,-33.4 558.0,-33.4 C729.0,-33.4 797.4,19.1 900.0,19.1" opacity="0.14"/><path d="M0.0,155.3 C172.8,155.3 201.6,34.4 288.0,34.4 C423.0,34.4 504.0,-30.9 558.0,-30.9 C729.0,-30.9 797.4,20.4 900.0,20.4" opacity="0.18"/><path d="M0.0,156.1 C172.8,156.1 201.6,36.3 288.0,36.3 C423.0,36.3 504.0,-28.5 558.0,-28.5 C729.0,-28.5 797.4,21.8 900.0,21.8" opacity="0.21"/><path d="M0.0,157.0 C172.8,157.0 201.6,38.1 288.0,38.1 C423.0,38.1 504.0,-26.0 558.0,-26.0 C729.0,-26.0 797.4,23.1 900.0,23.1" opacity="0.25"/><path d="M0.0,157.8 C172.8,157.8 201.6,39.9 288.0,39.9 C423.0,39.9 504.0,-23.6 558.0,-23.6 C729.0,-23.6 797.4,24.5 900.0,24.5" opacity="0.29"/><path d="M0.0,158.7 C172.8,158.7 201.6,41.8 288.0,41.8 C423.0,41.8 504.0,-21.1 558.0,-21.1 C729.0,-21.1 797.4,25.8 900.0,25.8" opacity="0.32"/><path d="M0.0,159.5 C172.8,159.5 201.6,43.6 288.0,43.6 C423.0,43.6 504.0,-18.7 558.0,-18.7 C729.0,-18.7 797.4,27.2 900.0,27.2" opacity="0.36"/><path d="M0.0,160.4 C172.8,160.4 201.6,45.4 288.0,45.4 C423.0,45.4 504.0,-16.2 558.0,-16.2 C729.0,-16.2 797.4,28.5 900.0,28.5" opacity="0.39"/><path d="M0.0,161.2 C172.8,161.2 201.6,47.3 288.0,47.3 C423.0,47.3 504.0,-13.8 558.0,-13.8 C729.0,-13.8 797.4,29.8 900.0,29.8" opacity="0.42"/><path d="M0.0,162.1 C172.8,162.1 201.6,49.1 288.0,49.1 C423.0,49.1 504.0,-11.4 558.0,-11.4 C729.0,-11.4 797.4,31.2 900.0,31.2" opacity="0.45"/><path d="M0.0,163.0 C172.8,163.0 201.6,50.9 288.0,50.9 C423.0,50.9 504.0,-8.9 558.0,-8.9 C729.0,-8.9 797.4,32.5 900.0,32.5" opacity="0.48"/><path d="M0.0,163.8 C172.8,163.8 201.6,52.8 288.0,52.8 C423.0,52.8 504.0,-6.5 558.0,-6.5 C729.0,-6.5 797.4,33.9 900.0,33.9" opacity="0.51"/><path d="M0.0,164.7 C172.8,164.7 201.6,54.6 288.0,54.6 C423.0,54.6 504.0,-4.0 558.0,-4.0 C729.0,-4.0 797.4,35.2 900.0,35.2" opacity="0.53"/><path d="M0.0,165.5 C172.8,165.5 201.6,56.4 288.0,56.4 C423.0,56.4 504.0,-1.6 558.0,-1.6 C729.0,-1.6 797.4,36.6 900.0,36.6" opacity="0.56"/><path d="M0.0,166.4 C172.8,166.4 201.6,58.3 288.0,58.3 C423.0,58.3 504.0,0.9 558.0,0.9 C729.0,0.9 797.4,37.9 900.0,37.9" opacity="0.58"/><path d="M0.0,167.2 C172.8,167.2 201.6,60.1 288.0,60.1 C423.0,60.1 504.0,3.3 558.0,3.3 C729.0,3.3 797.4,39.3 900.0,39.3" opacity="0.59"/><path d="M0.0,168.1 C172.8,168.1 201.6,61.9 288.0,61.9 C423.0,61.9 504.0,5.8 558.0,5.8 C729.0,5.8 797.4,40.6 900.0,40.6" opacity="0.61"/><path d="M0.0,168.9 C172.8,168.9 201.6,63.8 288.0,63.8 C423.0,63.8 504.0,8.2 558.0,8.2 C729.0,8.2 797.4,42.0 900.0,42.0" opacity="0.62"/><path d="M0.0,169.8 C172.8,169.8 201.6,65.6 288.0,65.6 C423.0,65.6 504.0,10.6 558.0,10.6 C729.0,10.6 797.4,43.3 900.0,43.3" opacity="0.63"/><path d="M0.0,170.7 C172.8,170.7 201.6,67.4 288.0,67.4 C423.0,67.4 504.0,13.1 558.0,13.1 C729.0,13.1 797.4,44.6 900.0,44.6" opacity="0.64"/><path d="M0.0,171.5 C172.8,171.5 201.6,69.3 288.0,69.3 C423.0,69.3 504.0,15.5 558.0,15.5 C729.0,15.5 797.4,46.0 900.0,46.0" opacity="0.65"/><path d="M0.0,172.4 C172.8,172.4 201.6,71.1 288.0,71.1 C423.0,71.1 504.0,18.0 558.0,18.0 C729.0,18.0 797.4,47.3 900.0,47.3" opacity="0.65"/><path d="M0.0,173.2 C172.8,173.2 201.6,72.9 288.0,72.9 C423.0,72.9 504.0,20.4 558.0,20.4 C729.0,20.4 797.4,48.7 900.0,48.7" opacity="0.65"/><path d="M0.0,174.1 C172.8,174.1 201.6,74.8 288.0,74.8 C423.0,74.8 504.0,22.9 558.0,22.9 C729.0,22.9 797.4,50.0 900.0,50.0" opacity="0.65"/><path d="M0.0,174.9 C172.8,174.9 201.6,76.6 288.0,76.6 C423.0,76.6 504.0,25.3 558.0,25.3 C729.0,25.3 797.4,51.4 900.0,51.4" opacity="0.64"/><path d="M0.0,175.8 C172.8,175.8 201.6,78.4 288.0,78.4 C423.0,78.4 504.0,27.8 558.0,27.8 C729.0,27.8 797.4,52.7 900.0,52.7" opacity="0.63"/><path d="M0.0,176.6 C172.8,176.6 201.6,80.3 288.0,80.3 C423.0,80.3 504.0,30.2 558.0,30.2 C729.0,30.2 797.4,54.0 900.0,54.0" opacity="0.62"/><path d="M0.0,177.5 C172.8,177.5 201.6,82.1 288.0,82.1 C423.0,82.1 504.0,32.6 558.0,32.6 C729.0,32.6 797.4,55.4 900.0,55.4" opacity="0.61"/><path d="M0.0,178.4 C172.8,178.4 201.6,83.9 288.0,83.9 C423.0,83.9 504.0,35.1 558.0,35.1 C729.0,35.1 797.4,56.7 900.0,56.7" opacity="0.59"/><path d="M0.0,179.2 C172.8,179.2 201.6,85.8 288.0,85.8 C423.0,85.8 504.0,37.5 558.0,37.5 C729.0,37.5 797.4,58.1 900.0,58.1" opacity="0.58"/><path d="M0.0,180.1 C172.8,180.1 201.6,87.6 288.0,87.6 C423.0,87.6 504.0,40.0 558.0,40.0 C729.0,40.0 797.4,59.4 900.0,59.4" opacity="0.56"/><path d="M0.0,180.9 C172.8,180.9 201.6,89.4 288.0,89.4 C423.0,89.4 504.0,42.4 558.0,42.4 C729.0,42.4 797.4,60.8 900.0,60.8" opacity="0.53"/><path d="M0.0,181.8 C172.8,181.8 201.6,91.3 288.0,91.3 C423.0,91.3 504.0,44.9 558.0,44.9 C729.0,44.9 797.4,62.1 900.0,62.1" opacity="0.51"/><path d="M0.0,182.6 C172.8,182.6 201.6,93.1 288.0,93.1 C423.0,93.1 504.0,47.3 558.0,47.3 C729.0,47.3 797.4,63.5 900.0,63.5" opacity="0.48"/><path d="M0.0,183.5 C172.8,183.5 201.6,94.9 288.0,94.9 C423.0,94.9 504.0,49.8 558.0,49.8 C729.0,49.8 797.4,64.8 900.0,64.8" opacity="0.45"/><path d="M0.0,184.3 C172.8,184.3 201.6,96.8 288.0,96.8 C423.0,96.8 504.0,52.2 558.0,52.2 C729.0,52.2 797.4,66.2 900.0,66.2" opacity="0.42"/><path d="M0.0,185.2 C172.8,185.2 201.6,98.6 288.0,98.6 C423.0,98.6 504.0,54.6 558.0,54.6 C729.0,54.6 797.4,67.5 900.0,67.5" opacity="0.39"/><path d="M0.0,186.1 C172.8,186.1 201.6,100.4 288.0,100.4 C423.0,100.4 504.0,57.1 558.0,57.1 C729.0,57.1 797.4,68.8 900.0,68.8" opacity="0.36"/><path d="M0.0,186.9 C172.8,186.9 201.6,102.3 288.0,102.3 C423.0,102.3 504.0,59.5 558.0,59.5 C729.0,59.5 797.4,70.2 900.0,70.2" opacity="0.32"/><path d="M0.0,187.8 C172.8,187.8 201.6,104.1 288.0,104.1 C423.0,104.1 504.0,62.0 558.0,62.0 C729.0,62.0 797.4,71.5 900.0,71.5" opacity="0.29"/><path d="M0.0,188.6 C172.8,188.6 201.6,105.9 288.0,105.9 C423.0,105.9 504.0,64.4 558.0,64.4 C729.0,64.4 797.4,72.9 900.0,72.9" opacity="0.25"/><path d="M0.0,189.5 C172.8,189.5 201.6,107.8 288.0,107.8 C423.0,107.8 504.0,66.9 558.0,66.9 C729.0,66.9 797.4,74.2 900.0,74.2" opacity="0.21"/><path d="M0.0,190.3 C172.8,190.3 201.6,109.6 288.0,109.6 C423.0,109.6 504.0,69.3 558.0,69.3 C729.0,69.3 797.4,75.6 900.0,75.6" opacity="0.18"/><path d="M0.0,191.2 C172.8,191.2 201.6,111.4 288.0,111.4 C423.0,111.4 504.0,71.8 558.0,71.8 C729.0,71.8 797.4,76.9 900.0,76.9" opacity="0.14"/><path d="M0.0,192.0 C172.8,192.0 201.6,113.3 288.0,113.3 C423.0,113.3 504.0,74.2 558.0,74.2 C729.0,74.2 797.4,78.3 900.0,78.3" opacity="0.10"/></g></svg></div>
       <div class="stats-grid reveal">
         <div class="stat-card"><h3>Más del 76%</h3><p>Te encuentran y te visitan en menos de 24 horas</p></div>
         <div class="stat-card"><h3>Más de 21x</h3><p>Más chances de cerrar la venta si respondés rápido</p></div>
@@ -747,25 +728,6 @@
       });
     }, {threshold: 0.15});
     document.querySelectorAll('.reveal').forEach(function(el){ revealIO.observe(el); });
-  }
-
-  // Efecto de cursor en las cards de estadisticas (brillo + inclinacion sutil)
-  if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
-    document.querySelectorAll('.stat-card').forEach(function(card){
-      card.addEventListener('mousemove', function(e){
-        var rect = card.getBoundingClientRect();
-        var x = e.clientX - rect.left;
-        var y = e.clientY - rect.top;
-        card.style.setProperty('--mx', x + 'px');
-        card.style.setProperty('--my', y + 'px');
-        var cx = x / rect.width - 0.5;
-        var cy = y / rect.height - 0.5;
-        card.style.transform = 'perspective(600px) rotateY(' + (cx * 8) + 'deg) rotateX(' + (cy * -8) + 'deg) translateY(-2px)';
-      });
-      card.addEventListener('mouseleave', function(){
-        card.style.transform = '';
-      });
-    });
   }
 
   // Contador animado de la cifra del hero
