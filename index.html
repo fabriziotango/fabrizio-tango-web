@@ -192,11 +192,8 @@
   .cta-badge:active{transform:translateY(0) scale(.98);}
   @media (prefers-reduced-motion:reduce){.cta-badge,.cta-badge::after{transition:none;}}
   .cta-badge span,.cta-badge{position:relative;}
-  .cta-badge--grad{background:linear-gradient(100deg,var(--grad-1),var(--grad-3));color:#fff;box-shadow:0 14px 28px -14px rgba(33,88,214,.55);position:relative;overflow:hidden;}
-  .cta-badge--grad::before{content:'';position:absolute;top:0;left:-60%;width:40%;height:100%;background:linear-gradient(120deg,transparent,rgba(255,255,255,.4),transparent);transform:skewX(-20deg);transition:left .55s ease;}
-  .cta-badge--grad:hover::before{left:120%;}
+  .cta-badge--grad{background:linear-gradient(100deg,var(--grad-1),var(--grad-3));color:#fff;box-shadow:0 14px 28px -14px rgba(33,88,214,.55);position:relative;}
   .cta-badge--grad:hover{box-shadow:0 20px 36px -16px rgba(33,88,214,.65);}
-  @media (prefers-reduced-motion:reduce){.cta-badge--grad::before{display:none;}}
   .cta-badge--white{background:#fff;color:var(--ink);box-shadow:0 14px 28px -14px rgba(5,20,30,.35);}
   .cta-badge--white:hover{box-shadow:0 20px 36px -16px rgba(5,20,30,.4);}
   .cta-badge--block{display:flex;width:100%;}
@@ -278,17 +275,9 @@
   }
   .stat-card:hover{border-color:var(--aqua);transform:translateY(-2px);box-shadow:0 0 0 3px rgba(18,191,160,.12),0 20px 40px -22px rgba(5,20,30,.4);}
   .stat-card:hover::before{transform:scaleX(1);}
-  .stat-card::after{
-    content:'';position:absolute;width:6px;height:6px;border-radius:50%;
-    background:var(--aqua);box-shadow:0 0 10px 2px rgba(18,191,160,.7);
-  }
-  .stat-card:nth-child(1)::after{top:16px;left:18px;}
-  .stat-card:nth-child(2)::after{top:22px;right:20px;background:var(--blue);box-shadow:0 0 10px 2px rgba(46,116,242,.7);}
-  .stat-card:nth-child(3)::after{bottom:20px;left:16px;}
-  .stat-card:nth-child(4)::after{bottom:16px;right:18px;background:var(--blue);box-shadow:0 0 10px 2px rgba(46,116,242,.7);}
   @media (prefers-reduced-motion:reduce){.stat-card,.stat-card::before{transition:none;}}
   .stat-card h3{
-    font-size:clamp(1.7rem,2.4vw,2.5rem);font-weight:700;line-height:1.1;white-space:nowrap;
+    font-size:clamp(2.4rem,3.4vw,3.4rem);font-weight:700;line-height:1.1;white-space:nowrap;
     background:linear-gradient(90deg,var(--grad-1),var(--grad-3));-webkit-background-clip:text;background-clip:text;color:transparent;
   }
   .stat-card p{margin-top:10px;font-size:15.5px;color:var(--ink);line-height:1.5;font-weight:500;}
@@ -477,11 +466,11 @@
 
   footer{border-top:1px solid var(--line);padding:44px 0 36px;}
   .foot-hr{margin:28px 0;border-top:1px solid var(--line);}
-  .foot-legal{text-align:center;max-width:640px;margin:0 auto;}
+  .foot-legal{text-align:left;}
   .foot-brand{font-size:14px;font-weight:800;color:var(--blue-deep);}
-  .foot-tag{margin-top:8px;font-size:12.5px;line-height:1.6;color:var(--ink);}
-  .disclaimer{margin-top:18px;font-size:10.8px;line-height:1.7;color:var(--muted-2);}
-  .foot-bottom{margin-top:20px;padding-top:16px;border-top:1px solid var(--line);display:flex;flex-direction:column;align-items:center;gap:8px;font-size:11.5px;color:var(--muted-2);}
+  .foot-tag{margin-top:8px;font-size:12.5px;line-height:1.6;color:var(--ink);max-width:40ch;}
+  .disclaimer{margin-top:18px;font-size:10.8px;line-height:1.7;color:var(--muted-2);max-width:60ch;}
+  .foot-bottom{margin-top:20px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:11.5px;color:var(--muted-2);}
   .foot-bottom a{color:var(--muted-2);}
   .foot-bottom a:hover{color:var(--ink);}
 
@@ -775,7 +764,7 @@
     <div class="foot-legal">
       <div class="foot-brand">Fabrizio Tango</div>
       <p class="foot-tag">SEO Local y asistente de WhatsApp con IA para negocios de Latinoamérica.</p>
-      <p class="disclaimer">Los resultados pueden variar según el rubro, la ubicación y cómo se implemente el servicio. Este sitio no está afiliado a Google, Meta ni WhatsApp Inc.</p>
+      <p class="disclaimer">Los resultados pueden variar según el rubro, la ubicación y cómo se implemente el servicio.</p>
       <div class="foot-bottom">
         <span>&copy; 2026 Fabrizio Tango. Todos los derechos reservados.</span>
         <span>Términos y condiciones &middot; Política de privacidad</span>
@@ -787,10 +776,15 @@
 <script>
   var WHATSAPP_NUMBER = "5491178224907";
 
+  function whenPreloaderDone(cb){
+    if (window.__preloaderDone) { cb(); }
+    else { document.addEventListener('preloaderDone', cb, {once:true}); }
+  }
+
   // Pantalla de carga con el logo animado (minimo 3 segundos)
   (function(){
     var pre = document.getElementById('preloader');
-    if (!pre) return;
+    if (!pre) { window.__preloaderDone = true; document.dispatchEvent(new Event('preloaderDone')); return; }
     var plImg = document.getElementById('pl-logo-img');
     var navLogo = document.querySelector('.topnav-brand img');
     if (plImg && navLogo) plImg.src = navLogo.src;
@@ -798,6 +792,8 @@
     var startTs = Date.now();
     function reallyHide(){
       pre.classList.add('pl-hidden');
+      window.__preloaderDone = true;
+      document.dispatchEvent(new Event('preloaderDone'));
       setTimeout(function(){ pre.remove(); }, 500);
     }
     function hide(){
@@ -854,7 +850,7 @@
       var countIO = new IntersectionObserver(function(entries){
         entries.forEach(function(entry){
           if (entry.isIntersecting) {
-            animate();
+            whenPreloaderDone(animate);
             countIO.unobserve(entry.target);
           }
         });
@@ -888,11 +884,11 @@
       var statsIO = new IntersectionObserver(function(entries){
         entries.forEach(function(entry){
           if (entry.isIntersecting) {
-            counts.forEach(animateEl);
+            whenPreloaderDone(function(){ counts.forEach(animateEl); });
             statsIO.unobserve(entry.target);
           }
         });
-      }, {threshold: 0.4});
+      }, {threshold: 0.15});
       if (grid) statsIO.observe(grid);
     }
   })();
