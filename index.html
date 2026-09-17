@@ -179,7 +179,6 @@
   .count-up{font-variant-numeric:tabular-nums;}
   .hero p.sub{margin:16px auto 0;max-width:44ch;font-size:16px;line-height:1.6;color:var(--muted);}
   .hero-ctas{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:30px;}
-  .hero-cta-note{margin-top:14px;font-size:12.5px;color:var(--muted-2);}
   .hero-trust{margin-top:22px;font-size:12px;font-weight:700;letter-spacing:0.02em;color:var(--muted-2);}
   .hero-trust span{color:var(--muted);}
   /* BADGES / CTAs estilo nexumai (pastilla, degradado, flecha, efecto hover) */
@@ -548,7 +547,6 @@
   <div class="hero-ctas">
     <a class="cta-badge cta-badge--grad" href="#quiz">Quiero empezar ahora</a>
   </div>
-  <p class="hero-cta-note">Sin costo la primera llamada · Respondemos en el día</p>
 </header>
 
 <div class="wrap">
@@ -752,6 +750,22 @@
     </div>
   </div>
 
+  <div class="modal-backdrop" id="cookiesModal">
+    <div class="modal-card modal-card--legal">
+      <button type="button" class="modal-close js-modal-close" aria-label="Cerrar">&times;</button>
+      <div class="modal-banner"></div>
+      <div class="modal-body legal-body">
+        <h3>Cookies</h3>
+        <p class="legal-updated">Última actualización: julio de 2026</p>
+        <p>Este sitio usa únicamente cookies de Google Analytics (proveedor: Google), para saber cuántas visitas recibe y cómo se navega, y así poder mejorarlo.</p>
+        <p><strong>Qué cookies se usan.</strong> Cookies estándar de Google Analytics (por ejemplo _ga, _gid), que identifican tu navegador de forma anónima y expiran automáticamente después de un tiempo.</p>
+        <p><strong>Qué no se hace.</strong> No se usan cookies de publicidad, no se arma un perfil para venderte cosas de terceros, y no se comparte esta información con anunciantes.</p>
+        <p><strong>Cómo desactivarlas.</strong> Podés bloquear las cookies de análisis desde la configuración de tu navegador, o instalar el complemento de inhabilitación de Google Analytics.</p>
+        <p>Ante cualquier duda, podés escribir a <a href="mailto:fabrizio.a.tango@gmail.com" class="faq-link">fabrizio.a.tango@gmail.com</a>.</p>
+      </div>
+    </div>
+  </div>
+
   <section>
     <div class="s-head">
       <h2>Preguntas frecuentes</h2>
@@ -800,7 +814,7 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M3.5 6.5l8.5 6 8.5-6"/></svg>
       </a>
         </div>
-        <p class="foot-terms"><a href="#" id="openTerminos">Términos y condiciones</a> &middot; <a href="#" id="openPrivacidad">Política de privacidad</a></p>
+        <p class="foot-terms"><a href="#" id="openTerminos">Términos y condiciones</a> &middot; <a href="#" id="openPrivacidad">Política de privacidad</a> &middot; <a href="#" id="openCookies">Cookies</a></p>
       </div>
     </div>
   </div>
@@ -1046,6 +1060,8 @@
   var privacidadLink = document.getElementById('openPrivacidad');
   if (terminosLink) terminosLink.addEventListener('click', function(e){ e.preventDefault(); openModal(document.getElementById('terminosModal')); });
   if (privacidadLink) privacidadLink.addEventListener('click', function(e){ e.preventDefault(); openModal(document.getElementById('privacidadModal')); });
+  var cookiesLink = document.getElementById('openCookies');
+  if (cookiesLink) cookiesLink.addEventListener('click', function(e){ e.preventDefault(); openModal(document.getElementById('cookiesModal')); });
 
   function submitToNetlify(form){
     var data = new FormData(form);
