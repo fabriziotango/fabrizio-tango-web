@@ -465,14 +465,15 @@
   .faq-link{color:var(--aqua);font-weight:700;text-decoration:underline;}
 
   footer{border-top:1px solid var(--line);padding:44px 0 36px;}
-  .foot-hr{margin:28px calc(50% - 50vw) 28px;border-top:1px solid var(--line);}
-  .foot-legal{text-align:left;}
+  .foot-grid{display:flex;justify-content:space-between;align-items:flex-start;gap:32px;flex-wrap:wrap;}
+  .foot-legal{text-align:left;flex:1;min-width:240px;}
   .foot-brand{font-size:14px;font-weight:800;color:var(--blue-deep);}
   .foot-tag{margin-top:8px;font-size:12.5px;line-height:1.6;color:var(--ink);max-width:40ch;}
   .disclaimer{margin-top:18px;font-size:10.8px;line-height:1.7;color:var(--muted-2);}
-  .foot-bottom{margin-top:20px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:11.5px;color:var(--muted-2);}
-  .foot-bottom a{color:var(--muted-2);}
-  .foot-bottom a:hover{color:var(--ink);}
+  .foot-copy{margin-top:16px;font-size:11.5px;color:var(--muted-2);}
+  .foot-contact{display:flex;flex-direction:column;align-items:flex-end;gap:14px;}
+  .foot-contact .contact-grid{justify-content:flex-end;}
+  .foot-terms{font-size:11.5px;color:var(--muted-2);}
 
   @media (max-width:640px){
     .link-grid{grid-template-columns:repeat(2,1fr);}
@@ -480,6 +481,11 @@
     .topnav-brand{font-size:13px;gap:7px;}
     .topnav-brand img{width:26px;height:26px;}
     .topnav .cta-badge--sm{padding:8px 13px;font-size:11.5px;}
+    .foot-grid{flex-direction:column;align-items:center;text-align:center;}
+    .foot-legal{text-align:center;}
+    .foot-tag{max-width:none;}
+    .foot-contact{align-items:center;}
+    .foot-contact .contact-grid{justify-content:center;}
   }
   @media (max-width:360px){
     .topnav-brand span{display:none;}
@@ -745,8 +751,15 @@
 
 <footer>
   <div class="wrap">
-    <div class="s-head"><h2>Contacto</h2></div>
-    <div class="contact-grid reveal">
+    <div class="foot-grid">
+      <div class="foot-legal">
+        <div class="foot-brand">Fabrizio Tango</div>
+        <p class="foot-tag">SEO Local y asistente de WhatsApp con IA para negocios de Latinoamérica.</p>
+        <p class="disclaimer">Los resultados pueden variar según el rubro, la ubicación, la competencia y cómo se implemente el servicio. Las cifras y ejemplos de este sitio son estimaciones basadas en datos públicos y casos generales, no una promesa de resultados para tu negocio en particular.</p>
+        <p class="foot-copy">&copy; 2026 Fabrizio Tango. Todos los derechos reservados.</p>
+      </div>
+      <div class="foot-contact">
+        <div class="contact-grid reveal">
       <a class="contact-card" href="https://www.linkedin.com/in/fabriziotango/" target="_blank" rel="noopener" aria-label="LinkedIn">
         <svg viewBox="0 0 24 24"><rect x="3.3" y="3.3" width="17.4" height="17.4" rx="4" fill="none" stroke="currentColor" stroke-width="1.6"/><rect x="7.4" y="10.2" width="1.9" height="6.3" rx="0.3" fill="currentColor"/><circle cx="8.35" cy="7.5" r="1.05" fill="currentColor"/><path d="M11.3 10.2h1.85v1.2h.03c.26-.5.9-1.3 1.95-1.3 2.1 0 2.5 1.35 2.5 3.15v3.25h-1.95v-2.9c0-.7-.02-1.6-.98-1.6-.98 0-1.13.76-1.13 1.55v2.95h-1.95v-6.3z" fill="currentColor"/></svg>
       </a>
@@ -759,15 +772,8 @@
       <a class="contact-card" href="mailto:fabrizio.a.tango@gmail.com" aria-label="Email">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M3.5 6.5l8.5 6 8.5-6"/></svg>
       </a>
-    </div>
-    <div class="foot-hr"></div>
-    <div class="foot-legal">
-      <div class="foot-brand">Fabrizio Tango</div>
-      <p class="foot-tag">SEO Local y asistente de WhatsApp con IA para negocios de Latinoamérica.</p>
-      <p class="disclaimer">Los resultados pueden variar según el rubro, la ubicación y cómo se implemente el servicio.</p>
-      <div class="foot-bottom">
-        <span>&copy; 2026 Fabrizio Tango. Todos los derechos reservados.</span>
-        <span>Términos y condiciones &middot; Política de privacidad</span>
+        </div>
+        <p class="foot-terms">Términos y condiciones &middot; Política de privacidad &middot; Cookies</p>
       </div>
     </div>
   </div>
