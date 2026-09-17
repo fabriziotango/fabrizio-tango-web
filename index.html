@@ -253,6 +253,24 @@
   .service-combo p{font-size:14.5px;line-height:1.6;color:var(--muted);text-align:center;max-width:52ch;margin:0 auto;}
   .service-combo .cta-badge{align-self:center;margin-top:6px;}
 
+  /* COMO FUNCIONA */
+  .steps-grid{margin-top:24px;display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  .step-card{
+    position:relative;text-align:left;padding:28px 24px;
+    background:var(--panel);border:1.5px solid var(--line);border-radius:14px;
+    box-shadow:0 14px 30px -22px rgba(5,20,30,.35);
+    transition:border-color .25s ease,box-shadow .25s ease,transform .25s ease;
+  }
+  .step-card:hover{border-color:var(--aqua);transform:translateY(-2px);box-shadow:0 0 0 3px rgba(18,191,160,.12),0 20px 40px -22px rgba(5,20,30,.4);}
+  @media (prefers-reduced-motion:reduce){.step-card{transition:none;}}
+  .step-num{
+    display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:50%;
+    background:linear-gradient(90deg,var(--grad-1),var(--grad-3));color:#fff;font-weight:800;font-size:14px;
+  }
+  .step-card h3{margin-top:14px;font-size:16px;font-weight:800;color:var(--blue-deep);}
+  .step-card p{margin-top:8px;font-size:13.5px;line-height:1.55;color:var(--muted);}
+  @media (max-width:768px){.steps-grid{grid-template-columns:1fr;}.step-card{text-align:center;}}
+
   .stats-wrap{
     position:relative;overflow:hidden;
     margin-left:calc(50% - 50vw);margin-right:calc(50% - 50vw);
@@ -561,6 +579,24 @@
       <p>Un solo servicio pensado para negocios de alto ticket: te consigue compradores calificados en Google y responde por vos las 24 horas, para que ninguna oportunidad de miles de dólares se te escape.</p>
     </div>
 
+    <div class="steps-grid reveal">
+      <div class="step-card">
+        <span class="step-num">1</span>
+        <h3>Agendás tu llamada gratis</h3>
+        <p>Elegís día y horario en este mismo sitio, sin compromiso.</p>
+      </div>
+      <div class="step-card">
+        <span class="step-num">2</span>
+        <h3>Vemos si tiene sentido</h3>
+        <p>En la llamada evaluamos tu negocio y definimos juntos el alcance y la inversión.</p>
+      </div>
+      <div class="step-card">
+        <span class="step-num">3</span>
+        <h3>Empezás a recibir compradores calificados</h3>
+        <p>Implementamos el SEO Local y el asistente de WhatsApp con IA en tu negocio.</p>
+      </div>
+    </div>
+
   </section>
 
   <section id="quiz">
@@ -596,11 +632,11 @@
     <div class="quiz-step" data-step="3">
       <p class="quiz-step-q">Cuánto generás por mes hoy?</p>
       <div class="qual">
-        <button type="button" class="qual-row"><span>Menos de US$500 al mes</span></button>
-        <button type="button" class="qual-row"><span>Entre US$500 y US$1.500 al mes</span></button>
-        <button type="button" class="qual-row"><span>Entre US$1.500 y US$3.000 al mes</span></button>
-        <button type="button" class="qual-row"><span>Entre US$3.000 y US$5.000 al mes</span></button>
-        <button type="button" class="qual-row"><span>Más de US$5.000 al mes</span></button>
+        <button type="button" class="qual-row"><span>Menos de US$10.000 al mes</span></button>
+        <button type="button" class="qual-row"><span>Entre US$10.000 y US$30.000 al mes</span></button>
+        <button type="button" class="qual-row"><span>Entre US$30.000 y US$60.000 al mes</span></button>
+        <button type="button" class="qual-row"><span>Entre US$60.000 y US$100.000 al mes</span></button>
+        <button type="button" class="qual-row"><span>Más de US$100.000 al mes</span></button>
       </div>
       <button type="button" class="quiz-back">&larr; volver</button>
     </div>
