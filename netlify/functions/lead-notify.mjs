@@ -12,18 +12,23 @@ const LABELS = {
   servicio: "Servicio",
   turno: "Turno",
   negocio: "Tipo de negocio",
-  negocio_nombre: "Nombre del negocio"
+  negocio_nombre: "Nombre del negocio",
+  maps_link: "Ficha de Google Maps",
+  variante: "Variante recomendada (A Impulso, B VIP, C Multisucursal, D SEO Local Argentina)",
+  prioridad: "Prioridad",
+  origen: "Origen (de dónde llegó)",
+  codigo_plan: "Código del plan"
 };
 
 const TITLES = {
-  diagnostico: "📋 Interesado en el asistente (cuestionario)",
+  diagnostico: "📋 Nuevo quiz de visibilidad local",
   agendar: "📞 Agenda de llamada",
   demo: "🤖 Demo del asistente IA"
 };
 
 const FIELD_ORDER = {
   agendar: ["turno", "nombre", "email", "telefono", "negocio", "instagram"],
-  diagnostico: ["nombre", "negocio_nombre", "email", "whatsapp", "instagram", "respuestas"],
+  diagnostico: ["nombre", "negocio_nombre", "whatsapp", "email", "variante", "prioridad", "origen", "codigo_plan", "maps_link", "respuestas"],
   demo: ["nombre", "negocio", "whatsapp", "email"]
 };
 
